@@ -54,7 +54,7 @@ As you have noticed, blender has numerous features environments that, thanks to 
 
 [Learn more about 3D view](https://docs.blender.org/manual/en/dev/editors/3dview/introduction.html#tool-shelf)
 
-##### Properties editor 
+#### Properties editor 
 
 *Properties editor* allows you to modify the properties of the scene, rendering setting, transforming objects or changing their material or texture properties. The most important tabs you need are the object, material and texture properties. 
 
@@ -67,7 +67,7 @@ In *texture tab* you assign texture to objects, instead on plain color. You can 
 
 Note: Properties editor's interface is dynamically changing according to the selected object. For example, if you select the light, the little sun icon will appear to set the light properties or similarly you should select camera to be able to see the camera tab and modify the properties. 
 
-##### Outliner
+#### Outliner
 As its name suggests, outliner lists and organizes the scene objects. From there you can set the hierarchy, visibility of the object's or lock them if you need. You can also select and activate objects by clicking on their name in the list. 
 
 > images of python console
@@ -78,7 +78,9 @@ Other Complementary resources
 2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF)
 
 #### Basic object selection and interaction 
-Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
+
+Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using the mosue right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
+
 ----------
 
 ## Georefrencing the Blender Scene
@@ -144,8 +146,9 @@ The following procedure subdivides the imported mesh into smaller faces to enhan
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point. 
 
 
-__`Python console >>>`__
+__`Python editor`__
 ``` python
+import bpy
 bpy.ops.object.mode_set(mode='EDIT')
 bpy.ops.mesh.select_all(action='SELECT')
 bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
@@ -227,22 +230,44 @@ bpy.ops.render.render()
 ## Example 1: Comparing viewsheds 
 This is a step by step example for importing a dsm and comparing four viewsheds on diffrent instances of the model.   
 You can use the menu interface or python scripting to complete the example. 
-##### Setup the scene 
+#### Setting up the scene 
 * Run blender application
-* Select the default cube and delete it (right-click on the object > press delete > ok )
-* Set render engine to "Cycles". You can find it in the top header, the default is "Blender Render"
+* Select the default __Cube__ object in 3D viewport and delete it (right-click on the object > press delete > ok )
+* Set __render engine__ to "Cycles". You can find it in the top header, the default is "Blender Render"
+* Increase the _Lamp__ elevation and change the Lamp type to "Sun" for appropriate lighting
+    * Left click on the __Lamp__ object in __Ouliner__ (on the right side wih objects' list) to select it
+    * Go to __Properties editor__ > __Object__ (the orange cube icon) > __Transform__ section > change the *Z* value to 1000
 
+__`Python editor`__
+```python
+import bpy
+# remove the cube 
+cube = bpy.data.objects["Cube"]
+cube.select = True
+bpy.ops.object.delete()
 
-##### Setting up coordinate system 
+# change lamp type and elevation
+import bpy
+lamp = bpy.data.lamps["Lamp"]
+lamp.type = "SUN"
+lampObj = bpy.data.objects["Lamp"]
+lampObj.location[2] = 1000
+```
+
+|![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
+|:---:|
+#### Setting up coordinate system 
+ Note: Before proceeding with this step make sure that BlenderGIS addon is already setup and NAD83(HARN) has been defined in the setup preferences. 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
-
-##### Importing DSM
+|![Blender Viewport](img/addon_toolbar.JPG) __Figure 2__. Georeferencing setup in Blender GIS addon toolbar|![Blender Viewport](img/import_geo_raster.JPG) Georaster import parameters|
+|:---:|:---:|
+#### Importing DSM
 * Go to __file__ > __import__ > __Georeferenced Raster__ 
 * Set __subdivision__ to *Mesh* and select *NAD83(HARN)* for georeferencing
 * Browse to the 'ICC_workshop' folder and select 'example1_dsm.tif'
 * Click on __Import georaster__ on the top right header
-* If all the steps are followed correctly, you should be able to see the terrain in 3D view window (figure 1, left)
-*
+* If all the steps are followed correctly, you should be able to see the terrain in 3D view window
+
 __`Python console >>>`__
 ``` python
 dsmPath = "D:/Icc_workshop/example1_dsm.tif"
@@ -251,6 +276,7 @@ bpy.ops.importgis.georaster(filepath=dsmPath,
                             rastCRS="EPSG:3358")
 ```
 
+|![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
 #### Surface subdivision and refinement
 
 * Select surface model (right click on the object)
@@ -269,7 +295,7 @@ bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
 bpy.ops.object.mode_set(mode='OBJECT')
 ```
 
-|![Blender Viewport](img/figure_1_left.JPG) __Figure 1__. DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
+|![Blender Viewport](img/figure_1_left.JPG) DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
 |:---:|:---:|
 
 #### Generating 4 copies of the surface 
@@ -296,7 +322,7 @@ bpy.context.scene.objects.active.name = "example1_dsm3"
 bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(-750, 0, 0 )})
 bpy.context.scene.objects.active.name = "example1_dsm4"
 ```
-|![Blender Viewport](img/figure2.JPG) __Figure 2__. Replicated models|
+|![Blender Viewport](img/figure2.JPG) Replicated models|
 |:---:|
 
 #### Shading DSM surfaces 
@@ -321,10 +347,10 @@ Now notice how the material logic and workflow is represented in Node editor. Yo
 * Play with the __Fac__ slider on the __Mix shader__ node to adjust the mixture level 
 * Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
 
-|![Blender Viewport](img/figure_3.JPG)  __Figure 3__. Node editor and Properties panel|
+|![Blender Viewport](img/figure_3.JPG) Node editor and Properties panel|
 |:---:|
 
-|![Blender Viewport](img/figure_4.JPG) __Figure 4__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
+|![Blender Viewport](img/figure_4.JPG) Viewshed and Orthophoto draped on DSM surface using Mix shader |
 |:---:|
 
 __`Python editor`__
@@ -391,6 +417,3 @@ for obj in bpy.data.objects:
 ```
 ### Acknowledgment
 This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
-
-
-
