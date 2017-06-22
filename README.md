@@ -20,14 +20,11 @@ Blender is an open-source 3D modelling, rendering and game engine software. You 
 
 ## Basics of Blender interface
 
-Chances are that you find the blender interface intimidating when you confornt it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will warmup with the the viewport. Viewport is the place where we will interact with the 3D objects. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, blender viewporti allows full control over our viewing angle, the depth, the size and etc. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. 
+Chances are that you find the blender interface intimidating when you confornt it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will a basic introduction to some of the important features of the interface as well as navigating the 3D scene and interacting with objects. Viewport is the place where we will interact with the 3D objects. So let's start with how to navigate in the 3D scene.  
 
 |![Blender Viewport](img/Blender_interface.JPG)Blender interface|
 |:---:|
 
-
-#### Basic object selection and interaction 
-Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
 
 #### Editors
 Blender has a number of editors to view and modify various aspect of data. The blender interface is flexible so you can set each of the viewports to a specific editor and you can do that by clicking on the *editor type selector* on left side of a header. This allows you to reorganize and customize the interface based on your project needs and preferences. Also, you can add editors by dragging the triangular shaped stripes at corners of each viewport. Below we will review some of them that are most relevant to handling geospatial data.
@@ -36,7 +33,16 @@ The first one is python console where you can run simple and quick python comman
 Next in the list is the preferences editor where you can set the software parameters and manage your addons, we will use preferences later to install GIS and Sketchfab addons. 
 
 ##### 3D view
-The 3D View is used to interact with the 3D scene for modeling, animation, texture painting, etc. First is the toolbar located on the left side of the region and it has most of the tools for 3D editing, modelling and animation. Newly installed addons also appear in the toolbar. Now notice the bottom toolbar. In there you can use the view menu to select a specific viewpoint such as top, left or different perspectives. Also notice that each of these commands have a keyboard shortcut associated with them. For example you can push `numpad 3` (if you have a full keyboard) to switch to top view.
+The 3D View is used to interact with the 3D scene for modeling, animation, texture painting, etc. Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, blender viewporti allows full control over our viewing angle, the depth, the size and etc. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. 
+
+Now note the toolbar on the left side of the region which is called *Tool shelf* and it has a variety of the tools for 3D editing. Newly installed addons also appear in this toolbar. Now notice the bottom toolbar- so called *Header*. Header includes menues for adding, editing objects as well as viewing and shading options.
+
+
+
+|![Blender Viewport](img/editors_3dview_header.png) 3D view header (retrieved from Blender manual)|
+|:---:|
+
+Header's *View menu* allow you to select a specific viewpoint such as top, left or different perspectives. Also notice that each of these commands have a keyboard shortcut associated with them. For example you can push `numpad 3` (if you have a full keyboard) to switch to top view.
 
 Now let's try using the add menu to add some simple, so called primitive objects to the blender scene. Before doing that I would like to grab your attention to the target shaped icon, so called called 3D cursor, in the 3D viewport. Any item added to the scene will be placed at any location that the 3D cursor is. You can move the 3D cursor by left clicking on any location in the 3D scene. If you want to know or define the exact location of your 3D cursor, you should press N key on the 3D to unhide the right toolbar, inside which you can find the 3D cursor coordinates. Note that as I am changing the cursor location, the coordinates change. Now I lets say we want to add a sphere in a location with the 2,2,0 coordinates. From the add menu, select mesh and then choose UV sphere. Note that you can change the object parameters right after creation from the left toolbar, like level of detail, location and size.
 
@@ -70,7 +76,11 @@ As its name suggests, outliner lists and organizes the scene objects. From there
 Other Complementary resources
 1. [Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
 2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF-)
+
+#### Basic object selection and interaction 
+Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
 ----------
+
 ## Georefrencing the Blender Scene
 
 In this section we will learn how to setup blender GIS addon, georeferences and importing raster files and assigning textures to them. We will use Dorothia Dix park as a case study for this tutorial. 
@@ -211,6 +221,32 @@ bpy.ops.render.render()
 # Render in background using windows run command
 ../blender-2.77a-windows32/blender.exe d:/test/test.blend --render-output d:/test/t_ --engine CYCLES --render-format PNG --use-extension 1 --render-frame 1
 ```
+
+## Example 1: Comparing viewsheds 
+This is a step by step example for importing a dsm and comparing four viewsheds on diffrent instances of the model.   
+You can use the menu interface or python scripting to complete the example. 
+
+#### Step 1. Setup coordinate system 
+ 
+Find and click on GIS addon’s interface in 3D viewport’s left toolbar 
+In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
+Import Digital surface model
+#### Step 1. Setup coordinate system 
+Go to file > import > Georeferenced Raster
+Browse assignment directory and click on example_1_dsm.tif 
+In the “Import Georaster” section (bottom left side of the vindow” ) Set mode to “AS DEM” 
+Set Subdivision to Subsurf 
+Make sure the CRS is NAD83(HARN), click on import Georaster. The final model should look like figure1. 
+ 
+Surface subdivision and refinement
+ 
+Make sure that the surface model is selected 
+In In bottom ribbon, Object interaction mode switch to “Edit Mode” 
+In In bottom ribbon, Switch to Face select
+In bottom ribbon, Select click on (De)select All or use keyword “A” to select all faces 
+From Tools menu in left toolbar select “Subdivide” . The subdivide dialogue should appear on the bottom left on the toolbar. For “ Number of Cuts” select 5
+In In bottom ribbon, Object interaction mode switch to “Edit Mode” 
+In In bottom ribbon, Object menu > convert to select “Convert to Mesh”
 
 
 ### Acknowledgment
