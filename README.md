@@ -20,10 +20,10 @@ Blender is an open-source 3D modelling, rendering and game engine software. You 
 
 ## Basics of Blender interface
 
-Chances are that you find the blender interface intimidating when you confornt it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will start with the most important feature, which is the viewport. Viewport is the place where we will import and interact with the 3D objects , and create the 3D scene. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, 3D view allows full control over our viewing angle, the depth, the size and basically everything. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. 
+Chances are that you find the blender interface intimidating when you confornt it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will warmup with the the viewport. Viewport is the place where we will interact with the 3D objects. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, blender viewporti allows full control over our viewing angle, the depth, the size and etc. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. 
 
-![Markdown Here logo](img/Blender_interface.JPG)<br>
->image of viewport
+![Blender Viewport](img/Blender_interface.JPG)(Blender interface)|<br>
+
 
 #### Basic object selection and interaction 
 Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
