@@ -75,7 +75,7 @@ As its name suggests, outliner lists and organizes the scene objects. From there
 [learn more about editors](https://docs.blender.org/manual/en/dev/editors/)
 Other Complementary resources
 1. [Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
-2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF-)
+2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF)
 
 #### Basic object selection and interaction 
 Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
@@ -226,28 +226,46 @@ bpy.ops.render.render()
 This is a step by step example for importing a dsm and comparing four viewsheds on diffrent instances of the model.   
 You can use the menu interface or python scripting to complete the example. 
 
-#### Step 1. Setup coordinate system 
- 
-Find and click on GIS addon’s interface in 3D viewport’s left toolbar 
-In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
-Import Digital surface model
-#### Step 1. Setup coordinate system 
-Go to file > import > Georeferenced Raster
-Browse assignment directory and click on example_1_dsm.tif 
-In the “Import Georaster” section (bottom left side of the vindow” ) Set mode to “AS DEM” 
-Set Subdivision to Subsurf 
-Make sure the CRS is NAD83(HARN), click on import Georaster. The final model should look like figure1. 
- 
-Surface subdivision and refinement
- 
-Make sure that the surface model is selected 
-In In bottom ribbon, Object interaction mode switch to “Edit Mode” 
-In In bottom ribbon, Switch to Face select
-In bottom ribbon, Select click on (De)select All or use keyword “A” to select all faces 
-From Tools menu in left toolbar select “Subdivide” . The subdivide dialogue should appear on the bottom left on the toolbar. For “ Number of Cuts” select 5
-In In bottom ribbon, Object interaction mode switch to “Edit Mode” 
-In In bottom ribbon, Object menu > convert to select “Convert to Mesh”
+##### Setup coordinate system 
+* Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
 
+##### Import DSM
+* Go to __file__ > __import__ > __Georeferenced Raster__ 
+* Set __subdivision__ to *Mesh* and select *NAD83(HARN)* for georeferencing
+* Browse to the 'ICC_workshop' folder and select 'dsm.tif'
+* Click on __Import georaster__ on the top right header
+* If all the steps are followed correctly, you should be able to see the terrain in 3D view window (figure 1, left)
+*
+__`Python console >>>`__
+``` python
+dsmPath = "D:/Icc_workshop/ example1_dsm.tif"
+bpy.ops.importgis.georaster(filepath=dsmPath, 
+                            importMode="DEM", subdivision="mesh", 
+                            rastCRS="EPSG:3358")
+```
+
+##### Surface subdivision and refinement
+
+* Select surface model (right click on the object)
+* Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Edit Mode__ 
+* Switch to __Face select__
+* Go to __View__ > __(De)select All__ (or press `A`) to select all faces 
+* Go to __Tools___(left toolbar) > __Mesh__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "5" in the number of cuts tab
+* Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point (figure 1, right).
+* 
+
+
+__`Python editor `__
+``` python
+import bpy
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='SELECT')
+bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
+bpy.ops.object.mode_set(mode='OBJECT')
+```
+
+|![Blender Viewport](img/figure_1_left.JPG) __Figure 1__ DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision
+|:---:||:---:|
 
 ### Acknowledgment
 This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
