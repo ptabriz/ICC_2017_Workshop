@@ -322,6 +322,7 @@ Now notice how the material logic and workflow is represented in Node editor. Yo
 * Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
 
 |![Blender Viewport](img/figure_3_left.JPG) __Figure 3__. Node editor|![Blender Viewport](img/figure_3_right.JPG) Properties panel|
+|:---:|:---:|
 |![Blender Viewport](img/figure_3.JPG) __Figure 4__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
 |:---:|
 
