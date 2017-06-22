@@ -5,9 +5,9 @@ This tutorial intends to provide basic tips for importing and processing Geospat
 
 ## 1. Introduction to Blender inteface and environment 
 #### 1.1. What is blender and why using Blender for Geospatial visualization ?
-Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly relevant to geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
--> [Learn more about Sketchfab]()
--> [A sample geospatial model in Sketchfab](https://sketchfab.com/models/298dfaf54e4447459275493e7b2adf96)
+Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
+[Learn more about Sketchfab]()
+[A sample geospatial model in Sketchfab](https://sketchfab.com/models/298dfaf54e4447459275493e7b2adf96)
 
 Chances are that you find the blender interface intimidating when you open it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will start with the most important feature, which is the viewport. Viewport is the place where we will import and interact with the 3D objects , and create the 3D scene. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, 3D view allows full control over our viewing angle, the depth, the size and basically everything. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. So, all the viewing navigation is done with the middle click. 
 
@@ -55,11 +55,10 @@ As its name suggests, outliner lists and organizes the scene objects. From there
 
 > images of python console
 
-learn more about [editors](https://docs.blender.org/manual/en/dev/editors/)
-
-Usefull complementary resources
+[learn more about editors](https://docs.blender.org/manual/en/dev/editors/)
+Other Complementary resources
 1. [Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
-2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF-
+2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF-)
 ----------
 ## 2. Georefrencing the Blender Scene
 
@@ -87,7 +86,7 @@ Before setting up the coordinate reference system of the Blender scene and confi
 
 [Learn more](https://github.com/domlysz/BlenderGIS/wiki/Gereferencing-management) about Georefencing management 
 #### 2.4. Opening the blender file and setting the Coordinate system
-* Go to __file__ > __open__  and browse to find the downloaded 'ICC_workshop' folder and open the 'ICC_3D_example.blend' file
+* Go to __file__ > __open__  and browse to find the downloaded 'ICC_workshop' folder and open the 'ICC_viewshed_example.blend' file
 * From the __3D view__ toolbar (on the left side of the screen) , find __GIS__ panel 
 If you cannot find the GIS tab, then check if the add-on is properly installed and activated in blender preferences (step 2.2 )
 *  In the second section of the panel , __Geoscene__, click on the Gear shaped icon. You should be able to find and select the __NAD83(HARN)/North Carolina__ preset. Click on __Ok__ to set it as scene coordinate system.
@@ -108,9 +107,10 @@ Note: When importing your own raster data, you might encounter situations where 
 
 __`Python console >>>`__
 ```python
-bpy.ops.importgis.georaster(filepath="C:\ICC_workshop\dsm.tif", importMode="DEM", subdivision="mesh", rastCRS="EPSG:3358")
+bpy.ops.importgis.georaster(filepath="C:\ICC_workshop\dsm.tif", 
+                            importMode="DEM", subdivision="mesh", 
+                            rastCRS="EPSG:3358")
 ```
-
 ##### Surface subdivision and refinement
 Usually when surface or elevation models are imported in Blender they are downsampled to a defaults subdivision resulting in smoothing out the surface details.
 The following procedure subdivides the imported mesh into smaller faces to enhance the surface representation. 
@@ -154,11 +154,13 @@ import bpy
 mat = (bpy.data.materials.get("cumulative_viewshed") or 
        bpy.data.materials.new("cumulative_viewshed"))
 bpy.data.objects["dsm"].data.materials.append(mat)
+
 # Get material tree , nodes and links # 
 mat.use_nodes = True
 node_tree = bpy.data.materials["cumulative_viewshed"].node_tree
 nodes = node_tree.nodes
 links = node_tree.links
+
 # Add a new texture node and link it to the diffuse color node# 
 textureNode = node_tree.nodes.new("ShaderNodeTexImage")
 textureNode.select = True
@@ -193,6 +195,8 @@ bpy.ops.view3d.object_as_camera()
 #Render directly to the file path 
 bpy.context.scene.render.filepath = "D:\\Geospatial_studio\\Render\\t_"
 bpy.ops.render.render() 
+```
+```html
 # Render in background using windows run command
 ../blender-2.77a-windows32/blender.exe d:/test/test.blend --render-output d:/test/t_ --engine CYCLES --render-format PNG --use-extension 1 --render-frame 1
 ```
