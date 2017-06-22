@@ -264,7 +264,7 @@ bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
 bpy.ops.object.mode_set(mode='OBJECT')
 ```
 
-|![Blender Viewport](img/figure_1_left.JPG) __Figure 1__ DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision
+|![Blender Viewport](img/figure_1_left.JPG) __Figure 1__ DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
 |:---:||:---:|
 
 ### Acknowledgment
