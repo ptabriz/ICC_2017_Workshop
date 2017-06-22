@@ -259,8 +259,8 @@ lampObj.location[2] = 1000
  Note: Before proceeding with this step make sure that BlenderGIS addon is already setup and NAD83(HARN) has been defined in the setup preferences. 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
 
-|![Blender Viewport](img/addon_toolbar_1.JPG) Georeferencing setup in Blender GIS |![Blender Viewport](img/import_geo_raster.JPG) Georaster import parameters|
-|:---:|:---:|
+|![Blender Viewport](img/addon_toolbar_1.JPG) Georeferencing setup in Blender GIS |
+|:---:|
 
 ### Importing DSM
 * Go to __file__ > __import__ > __Georeferenced Raster__ 
@@ -276,8 +276,7 @@ bpy.ops.importgis.georaster(filepath=dsmPath,
                             importMode="DEM", subdivision="mesh", 
                             rastCRS="EPSG:3358")
 ```
-
-|![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
+|![Blender Viewport](img/import_geo_raster.JPG) Georaster import parameters|
 |:---:|
 ### Surface subdivision and refinement
 
@@ -349,7 +348,7 @@ Now notice how the material logic and workflow is represented in Node editor. Yo
 * Play with the __Fac__ slider on the __Mix shader__ node to adjust the mixture level 
 * Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
 
-|![Blender Viewport](img/figure_3.JPG) Node editor and Properties panel|
+|![Blender Viewport](img/figure_3_left.JPG) Node editor and Properties panel|
 |:---:|
 
 |![Blender Viewport](img/figure_4.JPG) Viewshed and Orthophoto draped on DSM surface using Mix shader |
