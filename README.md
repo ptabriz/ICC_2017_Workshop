@@ -160,6 +160,8 @@ In this section we will drape the cumulative viewshed as a texture on the DSM. Y
 * Select __Cycles Render__ as your rendering engine (top header). Cycles is Blender’s ray-trace based production render engine. 
 * Change the bottom editor panel to __node editor__. This can be done by simply changing the _Editor Type selector_ button which is located at the left side of a header. _Node editor_  allows you to visually design workflows related to materials and textures in environment. Discover more about node editor. [here](https://www.blender.org/manual/en/editors/node_editor/introduction.html)
 *  Go to __3D view__ bottom header (bottom of the window), find __Viewport shading__ button and select __Material__
+*  Go to __Properties tab__ > __Material__ > Press __+ New__ button to add material
+*  Rename the material name to "cumulative_viewshed"
 *  Expand the __Surface__ section and click on the gray square shaped icon on right side on the __color__ parameter to see a popup window with texture parameters. Select __Image texture__
 *  Click on the open icon to browse the images. Load "ICC_workshop\cumulative_viewshed.png". Now you should be able to see the texture draped on the terrain (make sure you are in Material view mode)
 *  Go to __Properties panel__ > __Material__  and from __Material browser select__ 'Ortho_texture'. Now you should be able to see the material workflow in node editor
@@ -225,6 +227,11 @@ bpy.ops.render.render()
 ## Example 1: Comparing viewsheds 
 This is a step by step example for importing a dsm and comparing four viewsheds on diffrent instances of the model.   
 You can use the menu interface or python scripting to complete the example. 
+##### Setup the scene 
+* Run blender application
+* Select the default cube and delete it (right-click on the object > press delete > ok )
+* Set render engine to "Cycles". You can find it in the top header, the default is "Blender Render"
+
 
 ##### Setup coordinate system 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
@@ -232,13 +239,13 @@ You can use the menu interface or python scripting to complete the example.
 ##### Import DSM
 * Go to __file__ > __import__ > __Georeferenced Raster__ 
 * Set __subdivision__ to *Mesh* and select *NAD83(HARN)* for georeferencing
-* Browse to the 'ICC_workshop' folder and select 'dsm.tif'
+* Browse to the 'ICC_workshop' folder and select 'example1_dsm.tif'
 * Click on __Import georaster__ on the top right header
 * If all the steps are followed correctly, you should be able to see the terrain in 3D view window (figure 1, left)
 *
 __`Python console >>>`__
 ``` python
-dsmPath = "D:/Icc_workshop/ example1_dsm.tif"
+dsmPath = "D:/Icc_workshop/example1_dsm.tif"
 bpy.ops.importgis.georaster(filepath=dsmPath, 
                             importMode="DEM", subdivision="mesh", 
                             rastCRS="EPSG:3358")
@@ -252,8 +259,6 @@ bpy.ops.importgis.georaster(filepath=dsmPath,
 * Go to __View__ > __(De)select All__ (or press `A`) to select all faces 
 * Go to __Tools___(left toolbar) > __Mesh__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "5" in the number of cuts tab
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point (figure 1, right).
-* 
-
 
 __`Python editor `__
 ``` python
@@ -264,11 +269,122 @@ bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
 bpy.ops.object.mode_set(mode='OBJECT')
 ```
 
-|![Blender Viewport](img/figure_1_left.JPG) __Figure 1__ DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
+|![Blender Viewport](img/figure_1_left.JPG) __Figure 1__. DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
 |:---:|:---:|
 
+##### Generate 4 copies of the surface 
+ 
+* Select DSM object and press `Shift + D` or `ctrl+c` , `ctrl+v` to make a copy of the object , you should see the example1_dsm.001 in the outliner 
+* Select the DSM.001 
+* go to __Properties Editor__ > __Object__ (cube icon) 
+* In the __Transform__ section > __Location__ > __X:__ type *750* to move the duplicated surface 750 meters to the east  
+* Create another copy of the DSM , put -750 for Y parameter to move the duplicate surface 750 meters to the south
+* Create another copy of the DSM, put 750 for X parameter and -750 in Y parameter. The final model should look like figure 
+
+__`Python editor`__
+``` python
+import bpy
+# Select and rename DSM model 
+obj = bpy.data.objects["example1_dsm"]
+obj.name = "example1_dsm1"
+obj.select = True
+# create and rename 3 replicates based on coordinates 
+bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(750, 0, 0 )})
+bpy.context.scene.objects.active.name = "example1_dsm2"
+bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(0, -750, 0 )})
+bpy.context.scene.objects.active.name = "example1_dsm3"
+bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(-750, 0, 0 )})
+bpy.context.scene.objects.active.name = "example1_dsm4"
+```
+|![Blender Viewport](img/figure_1_left.JPG) __Figure 2__. Replicated models|
+|:---:|
+
+##### Shading DSM surfaces 
+Now we will create a mixed material to combine Orthophoto and viewshed maps. We will use emission shaders to show viewsheds as glowing surfaces.
+
+* Make sure that the __Render engine__ is set to *Cycles* and 3D viewport __Shading__ is set to *Material*
+* Change the bottom editor panel to __Node editor__. This can be done by simply changing the Editor Type selector button which is located at the left side of a header.
+* Add another environment and chane it to __Text editor__ 
+* Select the first DSM object "example_dsm1"
+* Go to __Properties tab__ > __Material__  Press __+ New__ button to add material
+    * Rename the Material to "Viewshed1"
+    * Expand the __Surface__ section and click on the gray square shaped icon on right side on the __color__ parameter to see a popup window with texture parameters. Select __Mix Shader__ . You should be able to see two __Shaders__ added below the mix shader. 
+* Click on the first shader and select *Emission* from the dropdown list
+    * Click on the radio button on the left side of the __color__ field  >  __texture__ >  __Image texture__
+    * Click on __Open__ and load "viewshed_1_1.png". You should be able to see the viewshed draped on the DSM surface
+    * Change the __Strenght__ slider to 1.8 to increase the viewshed's emission power
+* Click on the second shader and select *Diffuse BSDF* from the dropdown list
+    * Click on the radio button on the left side of the __color__ field  >  __texture__ >  __Image texture__
+    * Click on __Open__ and load "orto.png". You should be able to see the viewshed draped on the DSM surface
+
+Now notice how the material logic and workflow is represented in Node editor. You can play with each of the individual nodes ,the links between them and the values. 
+* Play with the __Fac__ slider on the __Mix shader__ node to adjust the mixture level 
+* Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
+
+|![Blender Viewport](img/figure_3.JPG) __Figure 3__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
+|:---:|
+
+__`Python editor`__
+``` Python
+import bpy
+import os
+filePath = os.path.dirname(bpy.path.abspath("//"))
+ortho = os.path.join(filePath, 'ortho.png')
+
+for obj in bpy.data.objects:
+    if "dsm" in obj.name :
+        obj.select = True
+        fileName = "viewshed_{0}_1.png".format(obj.name[-1:])
+        matName = os.path.join(filePath, fileName)
+# Create a new material and assign it to the DSM object # 3
+
+        mat = (bpy.data.materials.get(matName) or 
+               bpy.data.materials.new(matName))
+               
+        obj.data.materials.append(mat)
+
+        # Get material tree , nodes and links # 
+        mat.use_nodes = True
+        #node_tree = bpy.data.materials["cumulative_viewshed"].node_tree
+        node_tree = mat.node_tree
+        nodes = node_tree.nodes
+        links = node_tree.links
+        for node in nodes:
+            nodes.remove(node)
+        diffuseNode = node_tree.nodes.new("ShaderNodeBsdfDiffuse")
+        diffuseNode.location = (300,400)
+        #diffuseNode = nodes["Diffuse BSDF"]
+
+        # Add a new texture for viewshed # 
+        viewshedNode = node_tree.nodes.new("ShaderNodeTexImage")
+        viewshedNode.select = True
+        node_tree.nodes.active = viewshedNode
+        viewshedNode.image = bpy.data.images.load(matName)
+        viewshedNode.location = (100, 100)
+
+        # Add a new texture for ortho # 
+        orthoNode = node_tree.nodes.new("ShaderNodeTexImage")
+        orthoNode.select = True
+        node_tree.nodes.active = orthoNode
+        orthoNode.image = bpy.data.images.load(ortho)
+        orthoNode.location = (100, 400)
+        # Add a new mixshader node and link it to the diffuse color node# 
+
+        mixShaderNode = node_tree.nodes.new("ShaderNodeMixShader")
+        mixShaderNode.location = (600, 250)
+        mixShaderNode.inputs["Fac"].default_value = .7
+        emissionNode = node_tree.nodes.new("ShaderNodeEmission")
+        emissionNode.location = (300, 100)
+        outputNode = node_tree.nodes.new("ShaderNodeOutputMaterial")
+        outputNode.location = (800, 250)
+        emissionNode.inputs[1].default_value = 2
+
+        links.new (viewshedNode.outputs["Color"], emissionNode.inputs["Color"])
+        links.new (orthoNode.outputs["Color"], diffuseNode.inputs["Color"])
+        links.new (emissionNode.outputs["Emission"], mixShaderNode.inputs[2])
+        links.new (diffuseNode.outputs["BSDF"], mixShaderNode.inputs[1])
+        links.new (mixShaderNode.outputs["Shader"], outputNode.inputs["Surface"])
+
+```
 ### Acknowledgment
-This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS), Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
-
-
-
+This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
