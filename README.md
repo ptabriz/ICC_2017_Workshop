@@ -265,10 +265,10 @@ bpy.ops.object.mode_set(mode='OBJECT')
 ```
 
 |![Blender Viewport](img/figure_1_left.JPG) __Figure 1__ DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
-|:---:||:---:|
+|:---:|:---:|
 
 ### Acknowledgment
-This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
+This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS), Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
 
 
 
