@@ -256,11 +256,14 @@ lampObj.location[2] = 1000
 
 |![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
 |:---:|
+
 #### Setting up coordinate system 
+
  Note: Before proceeding with this step make sure that BlenderGIS addon is already setup and NAD83(HARN) has been defined in the setup preferences. 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
 |![Blender Viewport](img/addon_toolbar.JPG) __Figure 2__. Georeferencing setup in Blender GIS addon toolbar|![Blender Viewport](img/import_geo_raster.JPG) Georaster import parameters|
 |:---:|:---:|
+
 #### Importing DSM
 * Go to __file__ > __import__ > __Georeferenced Raster__ 
 * Set __subdivision__ to *Mesh* and select *NAD83(HARN)* for georeferencing
@@ -277,6 +280,7 @@ bpy.ops.importgis.georaster(filepath=dsmPath,
 ```
 
 |![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
+
 #### Surface subdivision and refinement
 
 * Select surface model (right click on the object)
