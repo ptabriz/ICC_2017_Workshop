@@ -321,8 +321,7 @@ Now notice how the material logic and workflow is represented in Node editor. Yo
 * Play with the __Fac__ slider on the __Mix shader__ node to adjust the mixture level 
 * Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
 
-|<a href="url"><img src="img/figure_3_left.JPG" height="400" height="600" ></a> __Figure 3__. Node editor|<a href="url"><img src="img/figure_3_right.JPG"  height="272" height="600" ></a> __Figure 3__. Node editor Properties panel|
-|:---:|:---:|
+|![Blender Viewport](img/figure_3_left.JPG)  __Figure 3__. Node editor|![Blender Viewport](img/figure_3_right.JPG) Node editor Properties panel|
 
 |![Blender Viewport](img/figure_3.JPG) __Figure 4__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
 |:---:|
