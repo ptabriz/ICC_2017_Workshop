@@ -182,7 +182,7 @@ for n in imgnodes:
 diffuseNode = nodes [1]
 links.new (textureNode.outputs["Color"], diffuseNode.inputs[0])
 ```
-### 5. Rendering
+### Rendering
 
 There two different ways to render scene in _Cycles render engine_. You can activate _Real time-rendering_ that is useful for quick previews or GPU rendering for final output. Note that the GPU rendering is by default setup to render only active camera. 
 
