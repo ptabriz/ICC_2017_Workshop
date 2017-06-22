@@ -132,7 +132,7 @@ bpy.ops.importgis.georaster(filepath="C:\ICC_workshop\dsm.tif",
                             importMode="DEM", subdivision="mesh", 
                             rastCRS="EPSG:3358")
 ```
-##### Surface subdivision and refinement
+#### Surface subdivision and refinement
 Usually when surface or elevation models are imported in Blender they are downsampled to a defaults subdivision resulting in smoothing out the surface details.
 The following procedure subdivides the imported mesh into smaller faces to enhance the surface representation. 
 
@@ -233,10 +233,10 @@ You can use the menu interface or python scripting to complete the example.
 * Set render engine to "Cycles". You can find it in the top header, the default is "Blender Render"
 
 
-##### Setup coordinate system 
+##### Setting up coordinate system 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
 
-##### Import DSM
+##### Importing DSM
 * Go to __file__ > __import__ > __Georeferenced Raster__ 
 * Set __subdivision__ to *Mesh* and select *NAD83(HARN)* for georeferencing
 * Browse to the 'ICC_workshop' folder and select 'example1_dsm.tif'
@@ -251,7 +251,7 @@ bpy.ops.importgis.georaster(filepath=dsmPath,
                             rastCRS="EPSG:3358")
 ```
 
-##### Surface subdivision and refinement
+#### Surface subdivision and refinement
 
 * Select surface model (right click on the object)
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Edit Mode__ 
@@ -272,7 +272,7 @@ bpy.ops.object.mode_set(mode='OBJECT')
 |![Blender Viewport](img/figure_1_left.JPG) __Figure 1__. DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
 |:---:|:---:|
 
-##### Generate 4 copies of the surface 
+#### Generating 4 copies of the surface 
  
 * Select DSM object and press `Shift + D` or `ctrl+c` , `ctrl+v` to make a copy of the object , you should see the example1_dsm.001 in the outliner 
 * Select the DSM.001 
@@ -299,7 +299,7 @@ bpy.context.scene.objects.active.name = "example1_dsm4"
 |![Blender Viewport](img/figure2.JPG) __Figure 2__. Replicated models|
 |:---:|
 
-##### Shading DSM surfaces 
+#### Shading DSM surfaces 
 Now we will create a mixed material to combine Orthophoto and viewshed maps. We will use emission shaders to show viewsheds as glowing surfaces.
 
 * Make sure that the __Render engine__ is set to *Cycles* and 3D viewport __Shading__ is set to *Material*
