@@ -11,15 +11,18 @@ This tutorial intends to provide basic tips for importing and processing Geospat
 [V.Rendering](#rendering)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;[Example. A](#rendering)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;[Example. B](#rendering)<br>
-## Basics of Blender interface
+
 #### What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS)). Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your 3D modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. <br>
+<br>
 [Learn more about Sketchfab]()<br>
 [A sample geospatial model in Sketchfab](https://sketchfab.com/models/298dfaf54e4447459275493e7b2adf96)<br>
 
-Chances are that you find the blender interface intimidating when you open it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will start with the most important feature, which is the viewport. Viewport is the place where we will import and interact with the 3D objects , and create the 3D scene. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, 3D view allows full control over our viewing angle, the depth, the size and basically everything. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. So, all the viewing navigation is done with the middle click. 
+## Basics of Blender interface
 
->image of 3D scene
+Chances are that you find the blender interface intimidating when you confornt it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will start with the most important feature, which is the viewport. Viewport is the place where we will import and interact with the 3D objects , and create the 3D scene. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, 3D view allows full control over our viewing angle, the depth, the size and basically everything. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. 
+
+![Markdown Here logo](img/Blender_interface.png)<br>
 >image of viewport
 
 #### Basic object selection and interaction 
