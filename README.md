@@ -4,14 +4,14 @@
 # 3D Visualization of Geospatial Data with Blender
 This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
 
-[i.Basics of Blender interface](#i.basics-of-blender-interface)<br>
-[ii.Georefrencing the Blender Scene](#ii.georefrencing-the-blender-scene)<br>
-[iii.Importing Geospatial data](#iii.importing-geospatial-data)<br>
-[iv.Materials and Texture](#iv.materials-and-texture)<br>
-[v.Rendering](#v.rendering)<br>
+[I. Basics of Blender interface](#basics-of-blender-interface)<br>
+[II. Georefrencing the Blender Scene](#georefrencing-the-blender-scene)<br>
+[III. Importing Geospatial data](#importing-geospatial-data)<br>
+[IV. Materials and Texture](#materials-and-texture)<br>
+[V.Rendering](#rendering)<br>
 [Practice.A](#rendering)<br>
-[Practice.B]
-## i.Basics of Blender interface
+[Practice.B]#rendering)<br>
+## Basics of Blender interface
 #### What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
 [Learn more about Sketchfab]()
@@ -44,7 +44,7 @@ As you have noticed, blender has numerous features environments that, thanks to 
 
 [Learn more about 3D view](https://docs.blender.org/manual/en/dev/editors/3dview/introduction.html#tool-shelf)
 
-##### 2.Properties editor 
+##### Properties editor 
 
 *Properties editor* allows you to modify the properties of the scene, rendering setting, transforming objects or changing their material or texture properties. The most important tabs you need are the object, material and texture properties. 
 
@@ -99,7 +99,7 @@ If you cannot find the GIS tab, then check if the add-on is properly installed a
 *  In the second section of the panel , __Geoscene__, click on the Gear shaped icon. You should be able to find and select the __NAD83(HARN)/North Carolina__ preset. Click on __Ok__ to set it as scene coordinate system.
 
 ----------
-### 3.Importing Geospatial data
+### Importing Geospatial data
 #### Georasters
 Rasters can be imported and used in different ways. You can import them _As DEM_ to use it as a 3D surface or as_Raw DEM_  to be triangulated or skinned inside Blender. You can select _On Mesh_ to drape them as a texture on your 3D meshes. In this example, we import a digital surface model (DSM) derived from Lidar data points dataset as a 3D mesh using _As DEM_ method. 
 Note: Blender GIS imports both Digitial elevation model (DEM) and Digital surface model (DSM) through _As DEM_ method.
@@ -140,7 +140,7 @@ bpy.ops.object.mode_set(mode='OBJECT')
 Note: The subdivision number is based on your data resolution. Increasing the subdivision parameter may results in a very large blender file which heavily slows down the modelling. Try diffrent subdivision parameters to find the lowest number that produces the ideal precision
 
 ----------
-### 4.Materials and Texture
+### Materials and Texture
 In this section we will drape the cumulative viewshed as a texture on the DSM. You can apply textures to the 3D surfaces in blender using complex mapping methods (e.g. height mapping, bump mapping, normal mapping, displacement mapping, reflection mapping, specular mapping, mipmaps, occlusion mapping). However, [texture mapping](https://en.wikipedia.org/wiki/Texture_mapping) is beyond the scope of this tutorial. If you are interested to learn more about texture mapping and materials in blender, [Blender wikibooks](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Materials_and_Textures) is a good place to start. 
 
 * Select __Cycles Render__ as your rendering engine (top header). Cycles is Blender’s ray-trace based production render engine. 
@@ -183,7 +183,7 @@ for n in imgnodes:
 diffuseNode = nodes [1]
 links.new (textureNode.outputs["Color"], diffuseNode.inputs[0])
 ```
-### 5.Rendering
+### Rendering
 
 There two different ways to render scene in _Cycles render engine_. You can activate _Real time-rendering_ that is useful for quick previews or GPU rendering for final output. Note that the GPU rendering is by default setup to render only active camera. 
 
