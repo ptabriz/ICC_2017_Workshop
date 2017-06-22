@@ -296,7 +296,7 @@ bpy.context.scene.objects.active.name = "example1_dsm3"
 bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(-750, 0, 0 )})
 bpy.context.scene.objects.active.name = "example1_dsm4"
 ```
-|![Blender Viewport](img/figure_1_left.JPG) __Figure 2__. Replicated models|
+|![Blender Viewport](img/figure_2.JPG) __Figure 2__. Replicated models|
 |:---:|
 
 ##### Shading DSM surfaces 
@@ -322,6 +322,7 @@ Now notice how the material logic and workflow is represented in Node editor. Yo
 * Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
 
 |![Blender Viewport](img/figure_3.JPG)  __Figure 3__. Node editor and Properties panel|
+|:---:|
 
 |![Blender Viewport](img/figure_4.JPG) __Figure 4__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
 |:---:|
