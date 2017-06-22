@@ -321,7 +321,8 @@ Now notice how the material logic and workflow is represented in Node editor. Yo
 * Play with the __Fac__ slider on the __Mix shader__ node to adjust the mixture level 
 * Repeat the shading procedure for the other 3 objects using "Viewshed_1_2.png", "Viewshed_1_3.png", "Viewshed_1_4.png"  
 
-|![Blender Viewport](img/figure_3.JPG) __Figure 3__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
+|![Blender Viewport](img/figure_3_left.JPG) __Figure 3__. Node editor|![Blender Viewport](img/figure_3_right.JPG) Properties panel|
+|![Blender Viewport](img/figure_3.JPG) __Figure 4__. Viewshed and Orthophoto draped on DSM surface using Mix shader |
 |:---:|
 
 __`Python editor`__
@@ -388,3 +389,6 @@ for obj in bpy.data.objects:
 ```
 ### Acknowledgment
 This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
+
+
+
