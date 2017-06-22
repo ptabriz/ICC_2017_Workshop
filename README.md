@@ -2,15 +2,15 @@
 
 
 # 3D Visualization of Geospatial Data with Blender
-This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
+This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS).
 
 [I. Basics of Blender interface](#basics-of-blender-interface)<br>
 [II. Georefrencing the Blender Scene](#georefrencing-the-blender-scene)<br>
 [III. Importing Geospatial data](#importing-geospatial-data)<br>
 [IV. Materials and Texture](#materials-and-texture)<br>
 [V.Rendering](#rendering)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[Practice.A](#rendering)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[Practice.B](#rendering)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[Example. A](#rendering)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[Example. B](#rendering)<br>
 ## Basics of Blender interface
 #### What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
