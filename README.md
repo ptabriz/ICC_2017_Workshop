@@ -5,9 +5,10 @@
 This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
 
 [1. Introduction to Blender interface](#1.-introduction-to-Blender-interface)
+    <p>[1.1. What is blender and why Blender?])(1.1.-what-is-blender-and-why-Blender?)<p>
 
 ## 1. Introduction to Blender interface
-#### 1.1. What is blender and why using Blender for Geospatial visualization ?
+#### 1.1. What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
 [Learn more about Sketchfab]()
 [A sample geospatial model in Sketchfab](https://sketchfab.com/models/298dfaf54e4447459275493e7b2adf96)
