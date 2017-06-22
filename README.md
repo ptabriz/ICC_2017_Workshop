@@ -208,7 +208,7 @@ bpy.ops.render.render()
 ```
 
 
-### 6. Acknowledgment
+### Acknowledgment
 This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
 
 
