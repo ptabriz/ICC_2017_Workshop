@@ -4,10 +4,13 @@
 # 3D Visualization of Geospatial Data with Blender
 This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
 
-[1. Introduction to Blender interface](#1.-introduction-to-Blender-interface)
-&nbsp;&nbsp;[1.1. What is blender and why Blender?](1.1.-what-is-blender-and-why-Blender?)<p>
+[1. Basics of Blender interface](#1.-Basics-of-Blender-interface)<br>
+[2. Georefrencing the Blender Scene](#2.-georefrencing-the-Blender-Scene)<br>
+[3. Importing Geospatial data](#3.-importing-Geospatial-data)<br>
+[4. Materials and Texture](#4.-materials-and-Texture)<br>
+[4. Rendering](#5.-rendering)<br>
 
-## 1. Introduction to Blender interface
+## 1. Basics of Blender interface
 #### 1.1. What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
 [Learn more about Sketchfab]()
@@ -18,11 +21,10 @@ Chances are that you find the blender interface intimidating when you open it fo
 >image of 3D scene
 >image of viewport
 
-#### 1.2. Selecting and interacting with objects 
-Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. 
-Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
+#### 1.2. Basic object selection and interaction 
+Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
 
-#### 1.3. Blender editors
+#### 1.3. Editors
 Blender has a number of editors to view and modify various aspect of data. The blender interface is flexible so you can set each of the viewports to a specific editor and you can do that by clicking on the *editor type selector* on left side of a header. This allows you to reorganize and customize the interface based on your project needs and preferences. Also, you can add editors by dragging the triangular shaped stripes at corners of each viewport. Below we will review some of them that are most relevant to handling geospatial data.
 
 The first one is python console where you can run simple and quick python commands with access to the entire Python API, command history and auto-complete.
@@ -96,7 +98,7 @@ If you cannot find the GIS tab, then check if the add-on is properly installed a
 *  In the second section of the panel , __Geoscene__, click on the Gear shaped icon. You should be able to find and select the __NAD83(HARN)/North Carolina__ preset. Click on __Ok__ to set it as scene coordinate system.
 
 ----------
-### 3. Importing Geospatial datasets
+### 3. Importing Geospatial data
 #### 2.1. Georasters
 Rasters can be imported and used in different ways. You can import them _As DEM_ to use it as a 3D surface or as_Raw DEM_  to be triangulated or skinned inside Blender. You can select _On Mesh_ to drape them as a texture on your 3D meshes. In this example, we import a digital surface model (DSM) derived from Lidar data points dataset as a 3D mesh using _As DEM_ method. 
 Note: Blender GIS imports both Digitial elevation model (DEM) and Digital surface model (DSM) through _As DEM_ method.
