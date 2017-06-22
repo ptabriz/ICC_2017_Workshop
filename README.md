@@ -25,7 +25,6 @@ Chances are that you find the blender interface intimidating when you confornt i
 |![Blender Viewport](img/Blender_interface.JPG)Blender interface|
 |:---:|
 
-
 #### Editors
 Blender has a number of editors to view and modify various aspect of data. The blender interface is flexible so you can set each of the viewports to a specific editor and you can do that by clicking on the *editor type selector* on left side of a header. This allows you to reorganize and customize the interface based on your project needs and preferences. Also, you can add editors by dragging the triangular shaped stripes at corners of each viewport. Below we will review some of them that are most relevant to handling geospatial data.
 
@@ -38,13 +37,12 @@ The 3D View is used to interact with the 3D scene for modeling, animation, textu
 Now note the toolbar on the left side of the region which is called *Tool shelf* and it has a variety of the tools for 3D editing. Newly installed addons also appear in this toolbar. Now notice the bottom toolbar- so called *Header*. Header includes menues for adding, editing objects as well as viewing and shading options.
 
 
-
 |![Blender Viewport](img/editors_3dview_header.png) 3D view header (retrieved from Blender manual)|
 |:---:|
 
-Header's *View menu* allow you to select a specific viewpoint such as top, left or different perspectives. Also notice that each of these commands have a keyboard shortcut associated with them. For example you can push `numpad 3` (if you have a full keyboard) to switch to top view.
+Header's __View menu__ allow you to select a specific viewpoint such as top, left or different perspectives. Also notice that each of these commands have a keyboard shortcut associated with them. For example you can push `numpad 3` (if you have a full keyboard) to switch to top view.
 
-Now let's try using the add menu to add some simple, so called primitive objects to the blender scene. Before doing that I would like to grab your attention to the target shaped icon, so called called 3D cursor, in the 3D viewport. Any item added to the scene will be placed at any location that the 3D cursor is. You can move the 3D cursor by left clicking on any location in the 3D scene. If you want to know or define the exact location of your 3D cursor, you should press N key on the 3D to unhide the right toolbar, inside which you can find the 3D cursor coordinates. Note that as I am changing the cursor location, the coordinates change. Now I lets say we want to add a sphere in a location with the 2,2,0 coordinates. From the add menu, select mesh and then choose UV sphere. Note that you can change the object parameters right after creation from the left toolbar, like level of detail, location and size.
+Now let's try using the __add menu__ to add some simple, so called primitive objects to the blender scene. Before doing that I would like to grab your attention to the target shaped icon, so called called 3D cursor, in the 3D viewport. Any item added to the scene will be placed at any location that the 3D cursor is. You can move the 3D cursor by left clicking on any location in the 3D scene. If you want to know or define the exact location of your 3D cursor, you should press N key on the 3D to unhide the right toolbar, inside which you can find the 3D cursor coordinates. Note that as I am changing the cursor location, the coordinates change. Now I lets say we want to add a sphere in a location with the 2,2,0 coordinates. From the add menu, select mesh and then choose UV sphere. Note that you can change the object parameters right after creation from the left toolbar, like level of detail, location and size.
 
 The other useful option is the interaction mode using which you can toggle between the normal object mode and edit mode. Edit mode allows to access more low-level structure of your object, like faces, and vertices. In the next session, we will use some of these options to refine the terrain surface. For now it is important to get familiar with the 3 core elements, the faces, the edges and the vertex. You can select these elements by clicking on their corresponding icons. Note that the right click selection or transformation is now applied on the selected elements. 
  
@@ -56,31 +54,30 @@ As you have noticed, blender has numerous features environments that, thanks to 
 
 #### Properties editor 
 
-*Properties editor* allows you to modify the properties of the scene, rendering setting, transforming objects or changing their material or texture properties. The most important tabs you need are the object, material and texture properties. 
+__Properties editor__ allows you to modify the properties of the scene, rendering setting, transforming objects or changing their material or texture properties. The most important tabs you need are the object, material and texture properties. 
 
-In the *object properties* tab you can transform the location, orientation and scale of the object, along with display properties of them. Here you can use numeric input for transformation parameters.
+In the __Object properties__ tab you can transform the location, orientation and scale of the object, along with display properties of them. You can use numeric input for transformation parameters.
 
-In *materials* tab you can assign or change object’s materials.Without going into vast world of the materials and texturing, let's play with some basic  attributes.
-You can add and remove materials slots using + and - minus icons, click on the + icon to add a new material, or use material browser to assign previously created materials to the object.  You can adjust the diffuse parameters to change the color and shading of the material. Specular adjust the glossiness of the material. Also, play with the shading and transparency parameters to see you it impacts your object. 
+In __Materials__ tab you can assign or change an object’s material. You can add and remove material, or use material browser to assign previously created materials to the object. Some very basic material parameters include Diffuse and Specular. You can adjust the diffuse parameters to change the color and shading of the material and with Specular adjust the glossiness of the material. Also, play with the shading and transparency parameters to see you it impacts your object. 
  
-In *texture tab* you assign texture to objects, instead on plain color. You can select from available textures already available in scene using texture browser, or load a new one from hard drive. Textures are not only applied as the surface color and pattern, they can also be used to adjust the surface transparency and roughness. For example, you can assign a black and white image texture to represent the surface roughness of a wood. 
+In __Texture tab__ you can assign texture to the materials. You can select from available textures already available in scene using texture browser, or load a new one from hard drive. Textures are not only applied as the surface color and pattern, they can also be used to adjust the surface transparency and roughness. For example, you can assign a black and white image texture to represent the surface roughness of a wood. 
 
 Note: Properties editor's interface is dynamically changing according to the selected object. For example, if you select the light, the little sun icon will appear to set the light properties or similarly you should select camera to be able to see the camera tab and modify the properties. 
 
+|![Blender Viewport](img/properties.JPG) Properties panel|
+|:---:|
 #### Outliner
 As its name suggests, outliner lists and organizes the scene objects. From there you can set the hierarchy, visibility of the object's or lock them if you need. You can also select and activate objects by clicking on their name in the list. 
 
-> images of python console
-
 [learn more about editors](https://docs.blender.org/manual/en/dev/editors/)
-Other Complementary resources
-1. [Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
-2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF)
 
 #### Basic object selection and interaction 
 
 Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using the mosue right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
 
+Other Complementary resources for learning blender interface
+[Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
+[CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF)
 ----------
 
 ## Georefrencing the Blender Scene
@@ -262,7 +259,7 @@ lampObj.location[2] = 1000
  Note: Before proceeding with this step make sure that BlenderGIS addon is already setup and NAD83(HARN) has been defined in the setup preferences. 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
 
-|![Blender Viewport](img/addon_toolbar_1.JPG) Georeferencing setup in Blender GIS addon toolbar|![Blender Viewport](img/import_geo_raster.JPG) Georaster import parameters|
+|![Blender Viewport](img/addon_toolbar_1.JPG) Georeferencing setup in Blender GIS |![Blender Viewport](img/import_geo_raster.JPG) Georaster import parameters|
 |:---:|:---:|
 
 ### Importing DSM
@@ -281,7 +278,7 @@ bpy.ops.importgis.georaster(filepath=dsmPath,
 ```
 
 |![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
-
+|:---:|
 ### Surface subdivision and refinement
 
 * Select surface model (right click on the object)
