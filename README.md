@@ -4,14 +4,14 @@
 # 3D Visualization of Geospatial Data with Blender
 This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
 
-[1. Basics of Blender interface](#1.-basics-of-Blender-interface)<br>
-[2. Georefrencing the Blender Scene](#2.-georefrencing-the-Blender-Scene)<br>
-[3. Importing Geospatial data](#3.-importing-Geospatial-data)<br>
-[4. Materials and Texture](#4.-materials-and-Texture)<br>
+[Basics of Blender interface](#basics-of-Blender-interface)<br>
+[Georefrencing the Blender Scene](#georefrencing-the-Blender-Scene)<br>
+[Importing Geospatial data](#importing-Geospatial-data)<br>
+[Materials and Texture](#materials-and-Texture)<br>
 [Rendering](#rendering)<br>
 
-## 1. Basics of Blender interface
-#### 1.1. What is blender and why Blender?
+## Basics of Blender interface
+#### What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data (thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS), and also has a relatively easy API. Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. 
 [Learn more about Sketchfab]()
 [A sample geospatial model in Sketchfab](https://sketchfab.com/models/298dfaf54e4447459275493e7b2adf96)
@@ -21,10 +21,10 @@ Chances are that you find the blender interface intimidating when you open it fo
 >image of 3D scene
 >image of viewport
 
-#### 1.2. Basic object selection and interaction 
+#### Basic object selection and interaction 
 Objects are basically everything that you see in the 3D view. They include 3D objects, lights and camera. You can select any object in the scene using right-click. Selected objects are highlighted in orange so you can easily distinguish them. Use the 3 axis, so called handles to move the object in your prefered direction. To select multiple objects, press and hold `control` key and right click on objects to add to your selection. You can rotate objects by pressing `R` keyboard button, or scale objects using `S` key. Note that when you are transforming an object, a numeric output on the left bottom of the 3D viewport will give you more precise feedback on how much you moved, rotated or scaled an object. You can delete the object by selecting it, pressing `delete` key and selecting ok. 
 
-#### 1.3. Editors
+#### Editors
 Blender has a number of editors to view and modify various aspect of data. The blender interface is flexible so you can set each of the viewports to a specific editor and you can do that by clicking on the *editor type selector* on left side of a header. This allows you to reorganize and customize the interface based on your project needs and preferences. Also, you can add editors by dragging the triangular shaped stripes at corners of each viewport. Below we will review some of them that are most relevant to handling geospatial data.
 
 The first one is python console where you can run simple and quick python commands with access to the entire Python API, command history and auto-complete.
@@ -66,15 +66,15 @@ Other Complementary resources
 1. [Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
 2. [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF-)
 ----------
-## 2. Georefrencing the Blender Scene
+## Georefrencing the Blender Scene
 
 In this section we will learn how to setup blender GIS addon, georeferences and importing raster files and assigning textures to them. We will use Dorothia Dix park as a case study for this tutorial. 
 
-#### 2.1. Downloading the tutorial folder and material 
+#### Downloading the tutorial folder and material 
 * Go to workshop [link](https://github.com/ptabriz/ICC_2017_Workshop) and click on download, then download as zip option
 * Extract the zip file
 
-#### 2.2. Setting up Blender GIS addon
+#### Setting up Blender GIS addon
 * [Download](https://github.com/ptabriz/BlenderGIS) the customized version of BlenderGIS addon ande make sure that addon and required dependencies are properly installed
 * Open Blender 
 * Go to __file__ >  __user preferences__ ( `Alt + Ctrl + U` ) > __Add-ons__  
@@ -82,7 +82,7 @@ In this section we will learn how to setup blender GIS addon, georeferences and 
 * In the search results you should be able to see __3Dview: BlenderGIS__. Select to load the addon.
 * From the bottom of the preferences window click __Save User Settings__ so the addon is loaded next time you open blender
  
-#### 2.3. Adding a new predefined coordinate reference system (CRS)
+#### Adding a new predefined coordinate reference system (CRS)
 
 Before setting up the coordinate reference system of the Blender scene and configuring the scene projection, you should know the Coordinate Reference System (CRS) and the Spatial Reference Identifier (SRID) of your project. In GRASS GIS, CRS information can be retrieved using  `v.info` or `r.info` functions . You can get the SRID from [http://epsg.io/](http://epsg.io/) or [spatial reference website ](http://spatialreference.org/) using your CRS. The example datasets in this exercise uses a NAD83(HARN)/North Carolina CRS (SSRID EPSG: 3358)   
 
@@ -91,15 +91,15 @@ Before setting up the coordinate reference system of the Blender scene and confi
 * In the add window put  "EPSG: 3358" for __definition__ and "NAD83(HARN)/North Carolina" for __Description__. Then select __Save to addon preferences__
 
 [Learn more](https://github.com/domlysz/BlenderGIS/wiki/Gereferencing-management) about Georefencing management 
-#### 2.4. Opening the blender file and setting the Coordinate system
+#### Opening the blender file and setting the Coordinate system
 * Go to __file__ > __open__  and browse to find the downloaded 'ICC_workshop' folder and open the 'ICC_viewshed_example.blend' file
 * From the __3D view__ toolbar (on the left side of the screen) , find __GIS__ panel 
 If you cannot find the GIS tab, then check if the add-on is properly installed and activated in blender preferences (step 2.2 )
 *  In the second section of the panel , __Geoscene__, click on the Gear shaped icon. You should be able to find and select the __NAD83(HARN)/North Carolina__ preset. Click on __Ok__ to set it as scene coordinate system.
 
 ----------
-### 3. Importing Geospatial data
-#### 2.1. Georasters
+### Importing Geospatial data
+#### Georasters
 Rasters can be imported and used in different ways. You can import them _As DEM_ to use it as a 3D surface or as_Raw DEM_  to be triangulated or skinned inside Blender. You can select _On Mesh_ to drape them as a texture on your 3D meshes. In this example, we import a digital surface model (DSM) derived from Lidar data points dataset as a 3D mesh using _As DEM_ method. 
 Note: Blender GIS imports both Digitial elevation model (DEM) and Digital surface model (DSM) through _As DEM_ method.
 
@@ -139,7 +139,7 @@ bpy.ops.object.mode_set(mode='OBJECT')
 Note: The subdivision number is based on your data resolution. Increasing the subdivision parameter may results in a very large blender file which heavily slows down the modelling. Try diffrent subdivision parameters to find the lowest number that produces the ideal precision
 
 ----------
-### 4. Materials and Texture
+### Materials and Texture
 In this section we will drape the cumulative viewshed as a texture on the DSM. You can apply textures to the 3D surfaces in blender using complex mapping methods (e.g. height mapping, bump mapping, normal mapping, displacement mapping, reflection mapping, specular mapping, mipmaps, occlusion mapping). However, [texture mapping](https://en.wikipedia.org/wiki/Texture_mapping) is beyond the scope of this tutorial. If you are interested to learn more about texture mapping and materials in blender, [Blender wikibooks](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Materials_and_Textures) is a good place to start. 
 
 * Select __Cycles Render__ as your rendering engine (top header). Cycles is Blender’s ray-trace based production render engine. 
