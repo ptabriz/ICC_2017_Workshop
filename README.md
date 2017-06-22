@@ -5,7 +5,7 @@
 This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
 
 [Basics of Blender interface](#basics-of-blender-interface)<br>
-[Georefrencing the Blender Scene](#georefrencing-the-blender-Scene)<br>
+[Georefrencing the Blender Scene](#georefrencing-the-blender-scene)<br>
 [Importing Geospatial data](#importing-geospatial-data)<br>
 [Materials and Texture](#materials-and-texture)<br>
 [Rendering](#rendering)<br>
