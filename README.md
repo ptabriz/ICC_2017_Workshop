@@ -8,7 +8,7 @@ This tutorial intends to provide basic tips for importing and processing Geospat
 [2. Georefrencing the Blender Scene](#2.-georefrencing-the-Blender-Scene)<br>
 [3. Importing Geospatial data](#3.-importing-Geospatial-data)<br>
 [4. Materials and Texture](#4.-materials-and-Texture)<br>
-[4. Rendering](#5.-rendering)<br>
+[5. Rendering](#5.-rendering)<br>
 
 ## 1. Basics of Blender interface
 #### 1.1. What is blender and why Blender?
