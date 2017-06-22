@@ -296,7 +296,7 @@ bpy.context.scene.objects.active.name = "example1_dsm3"
 bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(-750, 0, 0 )})
 bpy.context.scene.objects.active.name = "example1_dsm4"
 ```
-|![Blender Viewport](img/figure_2.JPG) __Figure 2__. Replicated models|
+|![Blender Viewport](img/figure2.JPG) __Figure 2__. Replicated models|
 |:---:|
 
 ##### Shading DSM surfaces 
