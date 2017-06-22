@@ -5,7 +5,7 @@
 This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS). 
 
 [1. Introduction to Blender interface](#1.-introduction-to-Blender-interface)
-    <p>[1.1. What is blender and why Blender?])(1.1.-what-is-blender-and-why-Blender?)<p>
+&nbsp;&nbsp;[1.1. What is blender and why Blender?](1.1.-what-is-blender-and-why-Blender?)<p>
 
 ## 1. Introduction to Blender interface
 #### 1.1. What is blender and why Blender?
