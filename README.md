@@ -22,7 +22,7 @@ Blender is an open-source 3D modelling, rendering and game engine software. You 
 
 Chances are that you find the blender interface intimidating when you confornt it for the first time, specially if you have no previous 3D modelling experience. So to help you get started with and to get over all the technical terminology and confusing interface, we will start with the most important feature, which is the viewport. Viewport is the place where we will import and interact with the 3D objects , and create the 3D scene. So let's start with how to navigate in the 3D scene.  Unlike 2D environment of Arcmap, where you can only navigate in x and y directions, 3D view allows full control over our viewing angle, the depth, the size and basically everything. You can press and hold down mouse scroll (or middle click) button to change the viewing angle (or orbiting around), shift and drag to pan, and roll to zoom back and forth. 
 
-![Markdown Here logo](img/Blender_interface.png)<br>
+![Markdown Here logo](img/Blender_interface.JPG)<br>
 >image of viewport
 
 #### Basic object selection and interaction 
