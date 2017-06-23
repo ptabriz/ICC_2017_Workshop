@@ -145,8 +145,8 @@ The following procedure subdivides the imported mesh into smaller faces to enhan
 * Select surface model (right click on the object)
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Edit Mode__
 * Switch to __Face select__
-* Go to __View__ > __(De)select All__ (or press `A`) to select all faces
-* Go to __Tools___(left toolbar) > __Mesh__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "5" in the number of cuts tab
+* If object is not orange in color (i.e., nothing is selected), go to __Select__ > __(De)select All__ (or press `A`) to select all faces (when the object faces are selected, they will turn orange)
+* Go to __Tools__ (left toolbar) > __Mesh Tools__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "5" in the number of cuts tab
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point.
 
 
@@ -158,7 +158,7 @@ bpy.ops.mesh.select_all(action='SELECT')
 bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
 bpy.ops.object.mode_set(mode='OBJECT')
 ```
-Note: The subdivision number is based on your data resolution. Increasing the subdivision parameter may results in a very large blender file which heavily slows down the modelling. Try diffrent subdivision parameters to find the lowest number that produces the ideal precision
+Note: The subdivision number is based on your data resolution. Increasing the subdivision parameter may results in a very large blender file which heavily slows down the modelling. Try different subdivision parameters to find the lowest number that produces the ideal precision
 
 ----------
 
@@ -166,15 +166,13 @@ Note: The subdivision number is based on your data resolution. Increasing the su
 In this section we will drape the cumulative viewshed as a texture on the DSM. You can apply textures to the 3D surfaces in blender using complex mapping methods (e.g. height mapping, bump mapping, normal mapping, displacement mapping, reflection mapping, specular mapping, mipmaps, occlusion mapping). However, [texture mapping](https://en.wikipedia.org/wiki/Texture_mapping) is beyond the scope of this tutorial. If you are interested to learn more about texture mapping and materials in blender, [Blender wikibooks](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Materials_and_Textures) is a good place to start.
 
 * Select __Cycles Render__ as your rendering engine (top header). Cycles is Blender’s ray-trace based production render engine.
-* Change the bottom editor panel to __node editor__. This can be done by simply changing the _Editor Type selector_ button which is located at the left side of a header. _Node editor_  allows you to visually design workflows related to materials and textures in environment. Discover more about node editor. [here](https://www.blender.org/manual/en/editors/node_editor/introduction.html)
-*  Go to __3D view__ bottom header (bottom of the window), find __Viewport shading__ button and select __Material__
+* Change the bottom editor panel to __node editor__ (click on icon in very left bottom of Blender window). This can be done by simply changing the _Editor Type selector_ button which is located at the left side of a header. _Node editor_  allows you to visually design workflows related to materials and textures in environment. Discover more about node editor. [here](https://www.blender.org/manual/en/editors/node_editor/introduction.html)
+*  Go to __3D view__ bottom header, find __Viewport shading__ button and select __Material__
 *  Go to __Properties tab__ > __Material__ > Press __+ New__ button to add material
 *  Rename the material name to "cumulative_viewshed"
 *  Expand the __Surface__ section and click on the gray square shaped icon on right side on the __color__ parameter to see a popup window with texture parameters. Select __Image texture__
 *  Click on the open icon to browse the images. Load "ICC_workshop\cumulative_viewshed.png". Now you should be able to see the texture draped on the terrain (make sure you are in Material view mode)
-*  Go to __Properties panel__ > __Material__  and from __Material browser select__ 'Ortho_texture'. Now you should be able to see the material workflow in node editor
-*  On the left node , _image Texture_ , find __open image__ , and browse to the geospatial folder to 'select the Ortho.png'. You should be able to see the texture draped on the terrain
-*  Go to __3D view__ bottom header (bottom of the window), find __Viewport shading__ button and select __rendering__ to see the on-the-fly rendering of the model with shadows.
+*  Go to __3D view__ bottom header, find __Viewport shading__ button and select __Rendered__ to see the on-the-fly rendering of the model with shadows.
 
 Discover more about render engines and cycles [here](https://www.blender.org/manual/render/cycles/introduction.html)
 
@@ -238,20 +236,20 @@ bpy.ops.render.render()
 
 
 ## Example A: Light up the terrain with viewsheds
-This is a step by step example for importing a dsm and comparing four viewsheds on diffrent instances of the model.   
+This is a step by step example for importing a dsm and comparing four viewsheds on different instances of the model.   
 You can use the menu interface or python scripting to complete the example.
 
 ### Setting up the scene
 * Run blender application
 * Select the default __Cube__ object in 3D viewport and delete it (right-click on the object > press delete > ok )
 * Set __render engine__ to "Cycles". You can find it in the top header, the default is "Blender Render"
-* Increase the _Lamp__ elevation and change the Lamp type to "Sun" for appropriate lighting
+* To increase the _Lamp_ elevation and change the Lamp type to "Sun" for appropriate lighting:
     * Left click on the __Lamp__ object in __Ouliner__ (on the right side wih objects' list) to select it
-    * Go to __Properties editor__ > __Object__ (the orange cube icon) > __Transform__ section > change the *Z* value to 1000
-* Chane lamp type to Sun and increase the emmision
-    * Go to __Properties tab__ > __Lamp__ > expand the __Lamp__ section > Change lamp type to *Sun*
-    * Expand the __Nodes__ section > Select __Use Nodes__ to enable modifying Sun parameters.
-    * Set the __Strenght__ parameter to 6.00
+    * Go to __Properties editor__ > __Object__ (the orange cube icon) > __Transform__ section > in the __Location__ matrix, change the *Z* value to 1000 (see below figure if needed)
+* To change lamp type to Sun and increase the emission:
+    * In __Properties editor__ > __Lamp__ (two icons to the right of the __Object__ icon) > expand the __Lamp__ section > Change lamp type to *Sun*
+    * Expand the __Nodes__ section > Click on __Use Nodes__ to enable modifying Sun parameters.
+    * Set the __Strength__ parameter to 6.00
 
 __`Python editor`__
 ```python
@@ -289,6 +287,7 @@ bpy.context.scene.render.engine = 'CYCLES'
 
 ### Importing DSM
 * Go to __file__ > __import__ > __Georeferenced Raster__
+* On the bottom left side of the window find  __Mode__ and select __As DEM__
 * Set __subdivision__ to *Mesh* and select *NAD83(HARN)* for georeferencing
 * Browse to the 'ICC_workshop' folder and select 'example1_dsm.tif'
 * Click on __Import georaster__ on the top right header
@@ -312,9 +311,9 @@ bpy.ops.importgis.georaster(filepath=fileName,
 * Select surface model (right click on the object)
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Edit Mode__
 * Switch to __Face select__
-* Go to __View__ > __(De)select All__ (or press `A`) to select all faces
-* Go to __Tools___(left toolbar) > __Mesh__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "4" in the number of cuts tab
-* Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point (figure 1, right).
+* If object is not orange in color (i.e., nothing is selected), go to __Select__ > __(De)select All__ (or press `A`) to select all faces (when the object faces are selected, they will turn orange)
+* Go to __Tools__ (left toolbar) > __Mesh Tools__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "4" in the number of cuts tab
+* Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point (bottom figure, right image).
 
 __`Python editor `__
 ``` python
@@ -329,14 +328,14 @@ bpy.ops.object.mode_set(mode='OBJECT')
 |:---:|:---:|
 
 ### Importing viewpoint shapefiles
-In this step we will import viewpoint locations as a point feature shapefile and will replace them with spheres to visualise observer location
+In this step we will import viewpoint locations as a point feature shapefile and will replace them with spheres to visualize observer location
 * Import viewpoint shape file
    * Go to __file__ > __import__ > __Shapefile__
-   * Browse workshop data directory, select *vpoint.shp* and click on __Import Shp__ . The shape import dialogue should appear in front of the GIS adoon interface.
-   * Activate “Elevation from field” and in field section select “height”
+   * Browse workshop data directory, select *vpoints.shp* and click on __Import Shp__ . The shape import dialogue should appear in front of the GIS addon interface.
    * Activate “Elevation from field” and in field section select “height”
    * Activate “Separate objects”
-   * Activate “Object from field” and in field section select “Name”, you should be able to see 4 the points on the surface and 4 objects added to the Outliner with the names *Viewshed_1, Viewshed_2,Viewshed_3, Viewshed_4*
+   * Activate “Object name from field” and in field section select “Name”, you should be able to see 4 the points on the surface and 4 objects added to the Outliner with the names *Viewshed_1, Viewshed_2,Viewshed_3, Viewshed_4*
+   * Select __OK__
 
 
 |![Blender Viewport](img/shape_import.JPG) <br> Blender Gis shape import dialogue|
@@ -347,16 +346,20 @@ import bpy
 import os
 filePath = os.path.dirname(bpy.path.abspath("//"))
 fileName = os.path.join(filePath,'vpoints.shp')
-bpy.ops.importgis.shapefile(filepath=fileName,fieldElevName="height",fieldObjName='Name',separateObjects=True,shpCRS='epsg:3358')
+bpy.ops.importgis.shapefile(filepath=fileName,fieldElevName="height",fieldObjName='Name',separateObjects=True,shpCRS='EPSG:3358')
 ```
 
-* Create spheres on the viewpoint location
-    * Go to 3D Viewport’s __bottom header__ > __Add__ > __Mesh__ > __UV sphere__. The Add UV phere dialogue will open on the left side of the Toolbar. Set the Size parameter to 3.000
-    * Select Sphere object and press Shift + D or ctrl+c , ctrl+v to make a copy of the object, you should see the *Sphere.001* in the outliner
+* To create spheres on the viewpoint location:
+    * Go to 3D Viewport’s __bottom header__ > __Add__ > __Mesh__ > __UV sphere__. The Add UV sphere dialogue will open on the left side of the Toolbar. Set the Size parameter to 3.000
+    * Select Sphere object (by clicking on it in __Outliner__) and press Shift + D or ctrl+c , ctrl+v to make a copy of the object, you should see the *Sphere.001* in the outliner
     Make 3 copies of the sphere and rename them to *Sphere1, Sphere2, ... , Sphere4*
     * From __Outliner__ select the object *Viewshed_1*
-    * Go to __Properties Editor__ > __Object__ > __Location__ to retrieve the viewshed point’s coordinates (X,Y,Z)
-    * Move each of the 4 spheres to the corresponding viewshed location by typing in the coordinates in their location parameter (Properties Editor > Object > Location). Add 2.0 extra unit to the Z parameters to raise the spheres above the ground You should now have 4 spheres aligned on the imported viewshed points.
+    * Go to __Properties Editor__ > __Object__ > __Transform__ > __Location__ to retrieve the viewshed point’s coordinates (X,Y,Z)
+* To move each of the 4 spheres to the corresponding viewshed location:
+    * Copy and paste the retrieved coordinates from Viewshed_1 into the location parameters for Sphere1
+    * Add 2.0 extra units to the Z parameter (only for __Location__) to raise the spheres above the ground
+    * Repeat this process for each Viewshed and each Sphere
+    * You should now have 4 spheres aligned on the imported viewshed points.
 
 __`Python editor`__
 
@@ -380,8 +383,8 @@ for obj in bpy.data.objects:
 ### Generating 4 copies of the surface and viewpoint spheres
 
 * Select DSM object and press `Shift + D` or `ctrl+c` , `ctrl+v` to make a copy of the object , you should see the example1_dsm.001 in the outliner
-* Select the "example1_dsm1"
-* While Holding shift key select "Sphere_1" from outline to select both DSM and corresponding Sphere
+* Select the "example1_dsm001"
+* While holding shift key select "Sphere_1" from outline to select both DSM and corresponding Sphere
 * go to __Properties Editor__ > __Object__ (cube icon)
 * In the __Transform__ section > __Location__ > __X:__ type *750* to move the duplicated surface 750 meters to the east  
 * Create another copy of the DSM , put -750 for Y parameter to move the duplicate surface 750 meters to the south
@@ -425,19 +428,18 @@ sphere4Obj.location = (loc[0],loc[1]-750, loc[2])
 Now we will create a mixed material to combine Orthophoto and viewshed maps. We will use emission shaders to show viewsheds as glowing surfaces.
 
 * Make sure that the __Render engine__ is set to *Cycles* and 3D viewport __Shading__ is set to *Material*
-* Change the bottom editor panel to __Node editor__. This can be done by simply changing the Editor Type selector button which is located at the left side of a header.
-* Add another environment and chane it to __Text editor__
+* Change the bottom editor panel to __Node editor__. This can be done by simply changing the Editor Type selector (bottom left hand side of the window).
 * Select the first DSM object "example_dsm1"
 * Go to __Properties tab__ > __Material__  Press __+ New__ button to add material
     * Rename the Material to "Viewshed1"
-    * Expand the __Surface__ section and click on the gray square shaped icon on right side on the __color__ parameter to see a popup window with texture parameters. Select __Mix Shader__ . You should be able to see two __Shaders__ added below the mix shader.
+    * Expand the __Surface__ section and click on the gray square shaped icon on the right side of the __Surface__ parameter to see a popup window with texture parameters. Select __Mix Shader__ . You should be able to see two __Shaders__ added below the mix shader.
 * Click on the first shader and select *Emission* from the dropdown list
-    * Click on the radio button on the left side of the __color__ field  >  __texture__ >  __Image texture__
+    * Click on the radio button on the right side of the __color__ field  >  __texture__ >  __Image texture__
     * Click on __Open__ and load "viewshed_1_1.png". You should be able to see the viewshed draped on the DSM surface
-    * Change the __Strenght__ slider to 1.8 to increase the viewshed's emission power
+    * Change the __Strength__ slider to 1.8 to increase the viewshed's emission power
 * Click on the second shader and select *Diffuse BSDF* from the dropdown list
-    * Click on the radio button on the left side of the __color__ field  >  __texture__ >  __Image texture__
-    * Click on __Open__ and load "orto.png". You should be able to see the viewshed draped on the DSM surface
+    * Click on the radio button on the right side of the __color__ field  >  __texture__ >  __Image texture__
+    * Click on __Open__ and load "ortho.png". You should be able to see the viewshed draped on the DSM surface
 
 Now notice how the material logic and workflow is represented in Node editor. You can play with each of the individual nodes ,the links between them and the values.
 * Play with the __Fac__ slider on the __Mix shader__ node to adjust the mixture level
