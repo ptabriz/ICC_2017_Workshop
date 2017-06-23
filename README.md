@@ -65,7 +65,7 @@ In __Texture tab__ you can assign texture to the materials. You can select from 
 
 Note: Properties editor's interface is dynamically changing according to the selected object. For example, if you select the light, the little sun icon will appear to set the light properties or similarly you should select camera to be able to see the camera tab and modify the properties. 
 
-|![Blender Viewport](img/properties.JPG) Properties panel|
+|![Blender Viewport](img/properties.jpg) Properties panel|
 |:---:|
 
 #### Outliner
@@ -234,7 +234,7 @@ bpy.ops.render.render()
 ../blender-2.77a-windows32/blender.exe d:/test/test.blend --render-output d:/test/ --engine CYCLES --render-format PNG --use-extension 1 --render-frame 1
 ```
 
-![Blender Viewport](img/example_1_intro_lamp.JPG) Changing the lamp elevation
+![Blender Viewport](img/example_1_intro_lamp.jpg) Changing the lamp elevation
 
 
 ## Example A: Light up the terrain with viewsheds 
