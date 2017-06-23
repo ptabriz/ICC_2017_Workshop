@@ -11,7 +11,7 @@ This tutorial intends to provide basic tips for importing and processing Geospat
 [IV. Materials and Texture](#materials-and-texture)<br>
 [V.Rendering](#rendering)<br>
 ### Part 2. Step-by-step examples 
-&nbsp;&nbsp;&nbsp;&nbsp;[Example 1: Light up the terrain with viewsheds](#example-1:-light-up-the-terrain-with-viewsheds)<br>
+[Example 1: Light up the terrain with viewsheds](#example-1:-light-up-the-terrain-with-viewsheds)<br>
 
 ## What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS)). Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your 3D modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. <br>
