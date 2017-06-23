@@ -334,7 +334,7 @@ In this step we will import viewpoint locations as a point feature shapefile and
    * Activate “Object from field” and in field section select “Name”, you should be able to see 4 the points on the surface and 4 objects added to the Outliner with the names *Viewshed_1, Viewshed_2,Viewshed_3, Viewshed_4*
 
 
-|![Blender Viewport](img/shape_import.JPG) Blender Gis shape import dialogue|
+|![Blender Viewport](img/shape_import.JPG) <br> Blender Gis shape import dialogue|
 |:---:|
 __`Python editor`__
 ```python
@@ -366,7 +366,7 @@ for obj in bpy.data.objects:
         sphere.name = "Sphere" + obj.name[-2:]
 ```
 
-|![Blender Viewport](img/sdd_sphere.JPG) <br> UV Sphere toolbar|![Blender Viewport](img/location_sphere.JPG) <br> Object transform panel in properties editor|
+|![Blender Viewport](img/location_sphere.JPG) <br> UV Sphere toolbar|![Blender Viewport](img/add_sphere.JPG) <br> Object transform panel in properties editor|
 |:---:|:---:|
 
 |![Blender Viewport](img/spheres.JPG) <br> 4 spheres representing observation points|
@@ -529,7 +529,7 @@ for obj in bpy.data.objects:
         nodes[1].inputs[0].default_value = (.8, .3, 0, 1)
         obj.select = False
 ```
-|![Blender Viewport](img/fnale.JPG) <br> Viewport render of the viewshed |
+|![Blender Viewport](img/finale.JPG) <br> Viewport render of the viewshed |
 |:---:|
 ### Acknowledgment
 This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
