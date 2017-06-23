@@ -9,8 +9,7 @@ This tutorial intends to provide basic tips for importing and processing Geospat
 [III. Importing Geospatial data](#importing-geospatial-data)<br>
 [IV. Materials and Texture](#materials-and-texture)<br>
 [V.Rendering](#rendering)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[Example. A](#rendering)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[Example. B](#rendering)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[Example. A](#example-1:-Comparing-viewsheds)<br>
 
 ## What is blender and why Blender?
 Blender is an open-source 3D modelling, rendering and game engine software. You can create photorealistic scenes and lifelike animations with it. The feature that makes Blender highly suitable for geospatial visualization is its capability import various georeferenced data thanks to [BlenderGIS addon](https://github.com/domlysz/BlenderGIS)). Almost every operation done in the blender interface, can be scripted in the Python scripting environment, allowing you to automate or batch process your 3D modelling workflow. Moreover, powered by the [sketchfab addon](https://sketchfab.com/exporters/blender), you can easily export and publish your online geospatial models inside blender, so that everyone can interactively explore or download your work. <br>
@@ -66,6 +65,7 @@ Note: Properties editor's interface is dynamically changing according to the sel
 
 |![Blender Viewport](img/properties.JPG) Properties panel|
 |:---:|
+
 #### Outliner
 As its name suggests, outliner lists and organizes the scene objects. From there you can set the hierarchy, visibility of the object's or lock them if you need. You can also select and activate objects by clicking on their name in the list. 
 
@@ -78,6 +78,7 @@ Objects are basically everything that you see in the 3D view. They include 3D ob
 Other Complementary resources for learning blender interface
 [Blender manual](https://docs.blender.org/manual/en/dev/interface/index.html)
 [CG cookie](https://www.google.com/search?q=introduction+to+blender+interface&oq=introduction+to+blender+interface&aqs=chrome..69i57.5976j0j1&sourceid=chrome&ie=UTF)
+
 ----------
 
 ## Georefrencing the Blender Scene
@@ -105,6 +106,7 @@ Before setting up the coordinate reference system of the Blender scene and confi
 * In the add window put  "EPSG: 3358" for __definition__ and "NAD83(HARN)/North Carolina" for __Description__. Then select __Save to addon preferences__
 
 [Learn more](https://github.com/domlysz/BlenderGIS/wiki/Gereferencing-management) about Georefencing management 
+
 #### Opening the blender file and setting the Coordinate system
 * Go to __file__ > __open__  and browse to find the downloaded 'ICC_workshop' folder and open the 'ICC_viewshed_example.blend' file
 * From the __3D view__ toolbar (on the left side of the screen) , find __GIS__ panel 
@@ -112,7 +114,9 @@ If you cannot find the GIS tab, then check if the add-on is properly installed a
 *  In the second section of the panel , __Geoscene__, click on the Gear shaped icon. You should be able to find and select the __NAD83(HARN)/North Carolina__ preset. Click on __Ok__ to set it as scene coordinate system.
 
 ----------
-### Importing Geospatial data
+
+## Importing Geospatial data
+
 #### Georasters
 Rasters can be imported and used in different ways. You can import them _As DEM_ to use it as a 3D surface or as_Raw DEM_  to be triangulated or skinned inside Blender. You can select _On Mesh_ to drape them as a texture on your 3D meshes. In this example, we import a digital surface model (DSM) derived from Lidar data points dataset as a 3D mesh using _As DEM_ method. 
 Note: Blender GIS imports both Digitial elevation model (DEM) and Digital surface model (DSM) through _As DEM_ method.
@@ -131,6 +135,7 @@ bpy.ops.importgis.georaster(filepath="C:\ICC_workshop\dsm.tif",
                             importMode="DEM", subdivision="mesh", 
                             rastCRS="EPSG:3358")
 ```
+
 #### Surface subdivision and refinement
 Usually when surface or elevation models are imported in Blender they are downsampled to a defaults subdivision resulting in smoothing out the surface details.
 The following procedure subdivides the imported mesh into smaller faces to enhance the surface representation. 
@@ -154,7 +159,8 @@ bpy.ops.object.mode_set(mode='OBJECT')
 Note: The subdivision number is based on your data resolution. Increasing the subdivision parameter may results in a very large blender file which heavily slows down the modelling. Try diffrent subdivision parameters to find the lowest number that produces the ideal precision
 
 ----------
-### Materials and Texture
+
+## Materials and Texture
 In this section we will drape the cumulative viewshed as a texture on the DSM. You can apply textures to the 3D surfaces in blender using complex mapping methods (e.g. height mapping, bump mapping, normal mapping, displacement mapping, reflection mapping, specular mapping, mipmaps, occlusion mapping). However, [texture mapping](https://en.wikipedia.org/wiki/Texture_mapping) is beyond the scope of this tutorial. If you are interested to learn more about texture mapping and materials in blender, [Blender wikibooks](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Materials_and_Textures) is a good place to start. 
 
 * Select __Cycles Render__ as your rendering engine (top header). Cycles is Blender’s ray-trace based production render engine. 
@@ -199,7 +205,8 @@ for n in imgnodes:
 diffuseNode = nodes [1]
 links.new (textureNode.outputs["Color"], diffuseNode.inputs[0])
 ```
-### Rendering
+
+## Rendering
 
 There two different ways to render scene in _Cycles render engine_. You can activate _Real time-rendering_ that is useful for quick previews or GPU rendering for final output. Note that the GPU rendering is by default setup to render only active camera. 
 
@@ -215,18 +222,20 @@ bpy.context.space_data.viewport_shade = 'RENDERED'
 cameraObj = bpy.data.objects['Camera']
 bpy.context.scene.objects.active = cameraObj
 bpy.ops.view3d.object_as_camera()
+
 #Render directly to the file path 
-bpy.context.scene.render.filepath = "D:\\Geospatial_studio\\Render\\t_"
+bpy.context.scene.render.filepath = "D:\\ICC_conference\\Render\\"
 bpy.ops.render.render() 
 ```
 ```html
 # Render in background using windows run command
-../blender-2.77a-windows32/blender.exe d:/test/test.blend --render-output d:/test/t_ --engine CYCLES --render-format PNG --use-extension 1 --render-frame 1
+../blender-2.77a-windows32/blender.exe d:/test/test.blend --render-output d:/test/ --engine CYCLES --render-format PNG --use-extension 1 --render-frame 1
 ```
 
 ## Example 1: Comparing viewsheds 
 This is a step by step example for importing a dsm and comparing four viewsheds on diffrent instances of the model.   
 You can use the menu interface or python scripting to complete the example. 
+
 ### Setting up the scene 
 * Run blender application
 * Select the default __Cube__ object in 3D viewport and delete it (right-click on the object > press delete > ok )
@@ -234,6 +243,10 @@ You can use the menu interface or python scripting to complete the example.
 * Increase the _Lamp__ elevation and change the Lamp type to "Sun" for appropriate lighting
     * Left click on the __Lamp__ object in __Ouliner__ (on the right side wih objects' list) to select it
     * Go to __Properties editor__ > __Object__ (the orange cube icon) > __Transform__ section > change the *Z* value to 1000
+* Chane lamp type to Sun and increase the emmision
+    * Go to __Properties tab__ > __Lamp__ > expand the __Lamp__ section > Change lamp type to *Sun*
+    * Expand the __Nodes__ section > Select __Use Nodes__ to enable modifying Sun parameters.
+    * Set the __Strenght__ parameter to 6.00
 
 __`Python editor`__
 ```python
@@ -249,6 +262,13 @@ lamp = bpy.data.lamps["Lamp"]
 lamp.type = "SUN"
 lampObj = bpy.data.objects["Lamp"]
 lampObj.location[2] = 1000
+
+# Setup node editor for lamp and increase the lamp power
+lamp.use_nodes = True
+lamp.node_tree.nodes["Emission"].inputs[1].default_value = 6
+
+# Set render engine to cycles
+bpy.context.scene.render.engine = 'CYCLES'
 ```
 
 |![Blender Viewport](img/figure_lamp.JPG) Changing the lamp elevation|
@@ -259,8 +279,7 @@ lampObj.location[2] = 1000
  Note: Before proceeding with this step make sure that BlenderGIS addon is already setup and NAD83(HARN) has been defined in the setup preferences. 
 * Find and click on GIS addon’s interface in 3D viewport’s left toolbar. In the “Geoscene” section , click on the gear shape icon and switch to NAD83(HARN), click ok.
 
-|![Blender Viewport](img/addon_toolbar_1.JPG) 
-Georeferencing setup in Blender GIS |
+|![Blender Viewport](img/addon_toolbar_1.JPG) <br> Georeferencing setup in Blender GIS |
 |:---:|
 
 ### Importing DSM
@@ -270,23 +289,26 @@ Georeferencing setup in Blender GIS |
 * Click on __Import georaster__ on the top right header
 * If all the steps are followed correctly, you should be able to see the terrain in 3D view window
 
-__`Python console >>>`__
+__`Python editor`__
 ``` python
-dsmPath = "D:/Icc_workshop/example1_dsm.tif"
-bpy.ops.importgis.georaster(filepath=dsmPath, 
+import bpy
+import os
+filePath = os.path.dirname(bpy.path.abspath("//"))
+fileName = os.path.join(filePath,'example1_dsm.tif')
+bpy.ops.importgis.georaster(filepath=fileName, 
                             importMode="DEM", subdivision="mesh", 
                             rastCRS="EPSG:3358")
 ```
-|![Blender Viewport](img/import_geo_raster.JPG) 
-Georaster import parameters|
+|![Blender Viewport](img/import_geo_raster.JPG) <br> Georaster import parameters|
 |:---:|
+
 ### Surface subdivision and refinement
 
 * Select surface model (right click on the object)
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Edit Mode__ 
 * Switch to __Face select__
 * Go to __View__ > __(De)select All__ (or press `A`) to select all faces 
-* Go to __Tools___(left toolbar) > __Mesh__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "5" in the number of cuts tab
+* Go to __Tools___(left toolbar) > __Mesh__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "4" in the number of cuts tab
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point (figure 1, right).
 
 __`Python editor `__
@@ -294,41 +316,107 @@ __`Python editor `__
 import bpy
 bpy.ops.object.mode_set(mode='EDIT')
 bpy.ops.mesh.select_all(action='SELECT')
-bpy.ops.mesh.subdivide(number_cuts=5, smoothness=0.2)
+bpy.ops.mesh.subdivide(number_cuts=4, smoothness=0.2)
 bpy.ops.object.mode_set(mode='OBJECT')
 ```
 
 |![Blender Viewport](img/figure_1_left.JPG) DSM surface after importing|![Blender Viewport](img/figure_1_right.JPG) DSM surface after subdivision|
 |:---:|:---:|
 
-### Generating 4 copies of the surface 
- 
+### Importing viewpoint shapefiles
+In this step we will import viewpoint locations as a point feature shapefile and will replace them with spheres to visualise observer location
+* Import viewpoint shape file 
+   * Go to __file__ > __import__ > __Shapefile__ 
+   * Browse workshop data directory, select *vpoint.shp* and click on __Import Shp__ . The shape import dialogue should appear in front of the GIS adoon interface. 
+   * Activate “Elevation from field” and in field section select “height”
+   * Activate “Elevation from field” and in field section select “height”
+   * Activate “Separate objects” 
+   * Activate “Object from field” and in field section select “Name”, you should be able to see 4 the points on the surface and 4 objects added to the Outliner with the names *Viewshed_1, Viewshed_2,Viewshed_3, Viewshed_4*
+
+
+|![Blender Viewport](img/shape_import.JPG) Blender Gis shape import dialogue|
+|:---:|
+__`Python editor`__
+```python
+import bpy
+import os
+filePath = os.path.dirname(bpy.path.abspath("//"))
+fileName = os.path.join(filePath,'vpoints.shp')
+bpy.ops.importgis.shapefile(filepath=fileName,fieldElevName="height",fieldObjName='Name',separateObjects=True,shpCRS='epsg:3358')
+```
+
+* Create spheres on the viewpoint location
+    * Go to 3D Viewport’s __bottom header__ > __Add__ > __Mesh__ > __UV sphere__. The Add UV phere dialogue will open on the left side of the Toolbar. Set the Size parameter to 3.000
+    * Select Sphere object and press Shift + D or ctrl+c , ctrl+v to make a copy of the object, you should see the *Sphere.001* in the outliner 
+    Make 3 copies of the sphere and rename them to *Sphere1, Sphere2, ... , Sphere4*
+    * From __Outliner__ select the object *Viewshed_1* 
+    * Go to __Properties Editor__ > __Object__ > __Location__ to retrieve the viewshed point’s coordinates (X,Y,Z)
+    * Move each of the 4 spheres to the corresponding viewshed location by typing in the coordinates in their location parameter (Properties Editor > Object > Location). Add 2.0 extra unit to the Z parameters to raise the spheres above the ground You should now have 4 spheres aligned on the imported viewshed points. 
+
+__`Python editor`__
+
+```python
+import bpy
+# get get viewpoint objects create a sphere using their X,Y and Z+2 coordinates
+for obj in bpy.data.objects:
+    if "Viewshed" in obj.name:
+        bpy.ops.mesh.primitive_uv_sphere_add(size=3.0, location=(obj.location[0],obj.location[1],obj.location[2]+2))
+        sphere = bpy.context.active_object
+        # rename the sphere
+        sphere.name = "Sphere" + obj.name[-2:]
+```
+
+|![Blender Viewport](img/sdd_sphere.JPG) <br> UV Sphere toolbar|![Blender Viewport](img/location_sphere.JPG) <br> Object transform panel in properties editor|
+|:---:|:---:|
+
+|![Blender Viewport](img/spheres.JPG) <br> 4 spheres representing observation points|
+|:---:|
+
+### Generating 4 copies of the surface and viewpoint spheres 
+
 * Select DSM object and press `Shift + D` or `ctrl+c` , `ctrl+v` to make a copy of the object , you should see the example1_dsm.001 in the outliner 
-* Select the DSM.001 
+* Select the "example1_dsm1"
+* While Holding shift key select "Sphere_1" from outline to select both DSM and corresponding Sphere
 * go to __Properties Editor__ > __Object__ (cube icon) 
 * In the __Transform__ section > __Location__ > __X:__ type *750* to move the duplicated surface 750 meters to the east  
 * Create another copy of the DSM , put -750 for Y parameter to move the duplicate surface 750 meters to the south
 * Create another copy of the DSM, put 750 for X parameter and -750 in Y parameter. The final model should look like figure 
 
+
 __`Python editor`__
 ``` python
 import bpy
-# Select and rename DSM model 
+
+for ob in bpy.data.objects:
+    ob.select = False
 obj = bpy.data.objects["example1_dsm"]
 obj.name = "example1_dsm1"
 obj.select = True
-# create and rename 3 replicates based on coordinates 
+
+# create and rename 3 replicates of DSM, and move spheres to create 4 DSMs and spheres
 bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(750, 0, 0 )})
-bpy.context.scene.objects.active.name = "example1_dsm2"
+bpy.data.objects ["example1_dsm1.001"].name = "example1_dsm2"
+sphere2Obj = bpy.data.objects ["Sphere_2"]
+loc = sphere2Obj.location
+sphere2Obj.location = (loc[0]+750, loc[1], loc[2])
+
 bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(0, -750, 0 )})
-bpy.context.scene.objects.active.name = "example1_dsm3"
+bpy.data.objects ["example1_dsm2.001"].name = "example1_dsm3"
+sphere3Obj = bpy.data.objects ["Sphere_3"]
+loc = sphere3Obj.location
+sphere3Obj.location = (loc[0]+750, loc[1]-750, loc[2])
+
 bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(-750, 0, 0 )})
-bpy.context.scene.objects.active.name = "example1_dsm4"
+bpy.data.objects ["example1_dsm3.001"].name  = "example1_dsm4"
+sphere4Obj = bpy.data.objects ["Sphere_4"]
+loc = sphere4Obj.location
+sphere4Obj.location = (loc[0],loc[1]-750, loc[2])
 ```
+
 |![Blender Viewport](img/figure2.JPG) Replicated models|
 |:---:|
 
-### Shading DSM surfaces 
+### Shading Viewsheds and Viewpoints 
 Now we will create a mixed material to combine Orthophoto and viewshed maps. We will use emission shaders to show viewsheds as glowing surfaces.
 
 * Make sure that the __Render engine__ is set to *Cycles* and 3D viewport __Shading__ is set to *Material*
@@ -377,7 +465,6 @@ for obj in bpy.data.objects:
 
         # Get material tree , nodes and links # 
         mat.use_nodes = True
-        #node_tree = bpy.data.materials["cumulative_viewshed"].node_tree
         node_tree = mat.node_tree
         nodes = node_tree.nodes
         links = node_tree.links
@@ -418,5 +505,31 @@ for obj in bpy.data.objects:
         links.new (mixShaderNode.outputs["Shader"], outputNode.inputs["Surface"])
 
 ```
+
+Now follow the same workflow to shade viewpoint spheres but this time only use diffuse node (*Diffuse BSDF*) a with solid orange color. 
+
+* Select the first sphere, create a new material using nodes
+* Change the surface color to 
+* repeate the same for all spheres 
+``` python
+import bpy
+for obj in bpy.data.objects:
+    if "Sphere" in obj.name:
+        obj.select = True
+        matName = "sphere"
+    # Create a new material and assign it to the DSM object # 3
+        mat = (bpy.data.materials.get(matName) or 
+               bpy.data.materials.new(matName))
+        obj.data.materials.append(mat)
+        # Get material tree , nodes and links # 
+        mat.use_nodes = True
+        node_tree = mat.node_tree
+        nodes = node_tree.nodes
+        links = node_tree.links
+        nodes[1].inputs[0].default_value = (.8, .3, 0, 1)
+        obj.select = False
+```
+|![Blender Viewport](img/fnale.JPG) <br> Viewport render of the viewshed |
+|:---:|
 ### Acknowledgment
 This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/) and [Vaclav Petras](https://github.com/wenzeslaus).
