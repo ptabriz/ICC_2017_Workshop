@@ -234,7 +234,7 @@ bpy.ops.render.render()
 ../blender-2.77a-windows32/blender.exe d:/test/test.blend --render-output d:/test/ --engine CYCLES --render-format PNG --use-extension 1 --render-frame 1
 ```
 
-![Blender Viewport](img/example_1_intro_lamp.jpg) Changing the lamp elevation
+![Blender Viewport](img/example_1_intro.jpg)
 
 
 ## Example A: Light up the terrain with viewsheds 
