@@ -578,7 +578,6 @@ for obj in bpy.data.objects:
 ### Batch processing
 Now lets try to run the entire procedure with a python file using __Text editor__ and __Python console__  
 
-
 * From top header goto  __file__> __New__ to Open a fresh copy of Blender
 * Save the blender file with you preferred name in the workshop directory.
   __Note__: This is an important step since your all the paths in python code are linked to that directory
@@ -586,7 +585,6 @@ Now lets try to run the entire procedure with a python file using __Text editor_
 * Procedure for __Text editor__
   * In __Text editor__ > __Open__  > Go to workshop directory and find *example_a.py*
   * Click on __run script__
-
 * Procedure for  __Python Console__
   * type the following lines in the console. Note that you need to type in the workshop path in you computer in the first line.
 
@@ -755,4 +753,4 @@ for area in bpy.context.screen.areas:
 ------------
 
 ### Acknowledgment
-This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/), NC State's [Geoforall lab](https://geospatial.ncsu.edu/osgeorel/) and [Garret Millar](https://github.com/wenzeslaus).
+This work is built upon great contributions and support of [Blender](https://www.blender.org/) team, Blender GIS addon developers [(domlysz/BlenderGIS)](https://github.com/domlysz/BlenderGIS) , Center for [Geospatial Analytics](https://cnr.ncsu.edu/geospatial/), NC State's [Geoforall lab](https://geospatial.ncsu.edu/osgeorel/) and [Garret Millar](https://github.com/gcmillar).
