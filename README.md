@@ -88,6 +88,7 @@ __Node editor__ is an interface for any node based workflow. However, our focus 
 
 ![Blender Viewport](img/Nodes.JPG) <br> Node editor|
 |:---:|
+
 [learn more about nodes](https://docs.blender.org/manual/de/dev/render/cycles/nodes/index.html)
 
 
