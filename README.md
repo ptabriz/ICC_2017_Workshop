@@ -243,12 +243,12 @@ ___________________
 ## Light up the terrain with viewsheds
 This is a step by step example for importing a dsm and comparing four viewsheds on different instances of the model.   
 
-There are two ways to complete the example; Scripting method and GUI (graphical user interface) method. For each step, the GUI procedure is listed as bullet points. Below that you can find the code snippet if you would like to follow the Scripting procedure. To execute the code snippet open a new text file in __text editor__ and for each step directly copy-paste the code snippet into the editor and click on __Run Script__ to execute the code.
+There are two ways to complete the example; Scripting method (using blender's Python editor) and GUI (graphical user interface) method. For each step, the GUI procedure is listed as bullet points. Below that you can find the code snippet if you would like to follow the Scripting procedure. To execute the code snippet open a new text file in __Text Editor__ and for each step directly copy-paste the code snippet into the editor and click on __Run Script__ to execute the code.
 
 |Method| Duration      |  difficulty  |
 |------| ------------- | -----:|
 |GUI   |1-2 hours      | Complex  |
-|Scripting    | 10-15 minutes  |Easy|
+|Python editor    | 10-15 minutes  |Easy|
 
 
 NOTE: For enhanced learning complete the example with both methods but do not mix and match. Try to follow one method from the beginning to the end.
