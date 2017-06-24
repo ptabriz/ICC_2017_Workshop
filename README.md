@@ -72,11 +72,11 @@ Note: Properties editor's interface is dynamically changing according to the sel
 As its name suggests, outliner lists and organizes the scene objects. From there you can set the hierarchy, visibility of the 3D objects or lock them if you need. You can also select and activate objects by clicking on their name in the list.
 
 ### Python console
-The Python console is a very useful editor for testing and executing short commands, which can then integrated in larger workflows. The Blender modelling and gaming modules are already loaded in python console so you can you can test your code snippets without extra effort of calling the modules. Its a good way to explore possibilities,
+The Python console is a very useful editor for testing and executing short commands, which can then integrated in larger workflows. The Blender modelling and gaming modules are already loaded in python console so you can you can test your code snippets without extra effort of calling the modules.
 
-Introduction
 ![Blender Viewport](img/python_console.png) <br> Python console (retrieved from Blender manual)|
 |:---:|
+
 ### Text Editor
 Text editor allows you to edit your python script and run it inside Blender.
 By pressing the __+__ icon you can start a new file and click on __Run Script__ to execute your code.
@@ -170,7 +170,8 @@ The following procedure subdivides the imported mesh into smaller faces to enhan
 * Go to __Tools__ (left toolbar) > __Mesh Tools__ > __Subdivide__ . The subdivide dialogue should appear on the bottom left on the toolbar. Type "5" in the number of cuts tab
 * Go to __3D view__ editor's bottom toolbar > __Object interaction mode__ >  __Object Mode__ . You should be able to see the surface details at this point.
 
-![Blender Viewport](img/Face_Select.jpg)
+![Blender Viewport](img/Face_Select.JPG)
+
 __`Python editor`__
 ``` python
 import bpy
