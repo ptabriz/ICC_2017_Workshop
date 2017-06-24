@@ -11,7 +11,7 @@ This tutorial intends to provide basic tips for importing and processing Geospat
 [IV. Materials and Texture](#materials-and-texture)<br>
 [V. Rendering](#rendering)<br>
 ### Part 2. Step-by-step examples
-[Example A: Light up the terrain with viewsheds](#example-a:-light-up-the-terrain-with-viewsheds)<br>
+[Example A: Light up the terrain with viewsheds](#light-up-the-terrain-with-viewsheds)<br>
 
 
 ___________________
@@ -240,7 +240,7 @@ __________________
 ___________________
 ![Blender Viewport](img/example_1_intro.jpg)
 
-## Example A: Light up the terrain with viewsheds
+## Light up the terrain with viewsheds
 This is a step by step example for importing a dsm and comparing four viewsheds on different instances of the model.   
 
 There are two ways to complete the example; Scripting method and GUI (graphical user interface) method. For each step, the GUI procedure is listed as bullet points. Below that you can find the code snippet if you would like to follow the Scripting procedure. To execute the code snippet open a new text file in __text editor__ and for each step directly copy-paste the code snippet into the editor and click on __Run Script__ to execute the code.
