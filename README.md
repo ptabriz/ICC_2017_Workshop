@@ -1,9 +1,19 @@
 
-![icc logo](img/icc_logo.jpg) Properties panel
 
-# 3D Visualization of Geospatial Data with Blender (ICC 2017)
-This tutorial intends to provide basic tips for importing and processing Geospatial data in [Blender](https://www.blender.org/) using [BlenderGIS Addon](https://github.com/domlysz/BlenderGIS).
+<img src="img/icc_logo.png" height="100" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="img/Blender_logo.png" height="50"> <img src="img/GRASS_logo.png" height="50">
 
+
+
+# 3D Visualization of Analytical Geospatial Data with Blender (ICC 2017)
+This is material for the the ICC 2017 workshop called Analytical data visualizations with GRASS GIS and Blender , and Mapping open data with open source geospatial tools held in Washington, DC, July 1-2, 2017.These two sessions introduce GRASS GIS and Blender, example of its processing capabilities, and visualization techniques relevant to spatio-temporal data and high performance computing (HPC). Participants interactively visualize open data and design maps with several open source geospatial tools including Tangible Landscape system.
+
+This tutorial provides basic tips for importing, processing and visualizing Geospatial data in [Blender](https://www.blender.org/).<br>
+- Find the GRASS GIS material here [here](https://grasswiki.osgeo.org/wiki/Analytical_data_visualizations_at_ICC_2017)
+
+This tutorial is Prepared by : Payam Tabrizian <br>
+Presented with: Vaclav Petras, Anna Petrasova,  Brendan Harmon, and Helena Mitasova <br>
+Tested and reviewed by: [Garrett Millar](https://github.com/gcmillar)
 ### Part 1.  
 [I. Basics of Blender interface](#basics-of-blender-interface)<br>
 [II. Georeferencing the Blender Scene](#georeferencing-the-blender-scene)<br>
