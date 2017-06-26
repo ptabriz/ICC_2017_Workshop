@@ -203,6 +203,7 @@ Discover more about render engines and cycles [here](https://www.blender.org/man
 
 |![Blender Viewport](img/output_viewshed.JPG) <br> Cumulative viewshed draped onto the DSM|
 |:---:|
+
 __`Python editor`__
 ``` python
 import bpy
