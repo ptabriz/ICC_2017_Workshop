@@ -4,14 +4,14 @@
 
 
 
-# 3D Visualization of Geospatial Analytics with Blender (ICC 2017)
+# 3D Visualization of Geospatial Analytics with Blender at ICC 2017
 This is material for the the ICC 2017 workshop called Analytical data visualizations with GRASS GIS and Blender , and Mapping open data with open source geospatial tools held in Washington, DC, July 1-2, 2017. These two sessions introduce GRASS GIS and Blender, example of its processing capabilities, and visualization techniques relevant to spatio-temporal data and high performance computing (HPC). Participants interactively visualize open data and design maps with several open source geospatial tools including Tangible Landscape system.
 
 This tutorial provides basic tips for importing, processing and visualizing Geospatial data in [Blender](https://www.blender.org/).<br>
 - Find the GRASS GIS material [here](https://grasswiki.osgeo.org/wiki/Analytical_data_visualizations_at_ICC_2017)
 
-This tutorial is Prepared by : Payam Tabrizian <br>
-Presented with: Vaclav Petras, Anna Petrasova,  Brendan Harmon, and Helena Mitasova <br>
+This tutorial is Prepared by : [Payam Tabrizian](https://github.com/ptabriz) <br>
+Presented with: Vaclav Petras, [Anna Petrasova](https://github.com/petrasovaa/), [Brendan Harmon](https://github.com/baharmon), and [Helena Mitasova](https://github.com/hmitaso?tab=stars)<br>
 Tested and reviewed by: [Garrett Millar](https://github.com/gcmillar)
 ### Part 1.  
 [I. Basics of Blender interface](#basics-of-blender-interface)<br>
