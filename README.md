@@ -11,7 +11,7 @@ This tutorial provides basic tips for importing, processing and visualizing Geos
 - Find the GRASS GIS material [here](https://grasswiki.osgeo.org/wiki/Analytical_data_visualizations_at_ICC_2017)
 
 This tutorial is Prepared by : [Payam Tabrizian](https://github.com/ptabriz) <br>
-Presented with: Vaclav Petras, [Anna Petrasova](https://github.com/petrasovaa/), [Brendan Harmon](https://github.com/baharmon), and [Helena Mitasova](https://github.com/hmitaso?tab=stars)<br>
+Presented with: [Vaclav Petras](https://github.com/wenzeslaus), [Anna Petrasova](https://github.com/petrasovaa/), [Brendan Harmon](https://github.com/baharmon), and [Helena Mitasova](https://github.com/hmitaso?tab=stars)<br>
 Tested and reviewed by: [Garrett Millar](https://github.com/gcmillar)
 ### Part 1.  
 [I. Basics of Blender interface](#basics-of-blender-interface)<br>
