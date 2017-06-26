@@ -5,7 +5,7 @@
 
 
 # 3D Visualization of Geospatial Analytics at ICC 2017
-This is material for the the ICC 2017 workshop called Analytical data visualizations with GRASS GIS and Blender , and Mapping open data with open source geospatial tools held in Washington, DC, July 1-2, 2017. These two sessions introduce GRASS GIS and Blender, example of its processing capabilities, and visualization techniques relevant to spatio-temporal data and high performance computing (HPC). Participants interactively visualize open data and design maps with several open source geospatial tools including Tangible Landscape system.
+This is material for the the ICC 2017 workshop called Analytical data visualizations with GRASS GIS and Blender , and Mapping open data with open source geospatial tools held in Washington, DC, July 1-2, 2017. These two sessions introduce GRASS GIS and Blender, example of their processing capabilities, and visualization techniques relevant to spatio-temporal data and high performance computing (HPC). Participants interactively visualize open data and design maps with several open source geospatial tools including Tangible Landscape system.
 
 This tutorial provides basic tips for importing, processing and visualizing Geospatial data in [Blender](https://www.blender.org/).<br>
 - Find the GRASS GIS material [here](https://grasswiki.osgeo.org/wiki/Analytical_data_visualizations_at_ICC_2017)
