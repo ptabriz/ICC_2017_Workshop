@@ -81,7 +81,7 @@ The Python console is a very useful editor for testing and executing short comma
 Text editor allows you to edit your python script and run it inside Blender.
 By pressing the __+__ icon you can start a new file and click on __Run Script__ to execute your code.
 
-![Blender Viewport](img/text_editor.png) <br> Python console (retrieved from Blender manual)|
+![Blender Viewport](img/text_editor.png) <br> Text Editor|
 |:---:|
 ### Node Editor (material)
 __Node editor__ is an interface for any node based workflow. However, our focus is on the __Material Node editor__ that manages Materials, lights and backgrounds using a network of shading nodes.
