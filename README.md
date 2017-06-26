@@ -315,6 +315,7 @@ __`GUI`__
 
 |![Blender Viewport](img/import_geo_raster.JPG) <br> Georaster import parameters|
 |:---:|
+
 __`Python editor`__
 ``` python
 import bpy
@@ -364,6 +365,7 @@ __`GUI`__
 
 |![Blender Viewport](img/shape_import.JPG) <br> Blender Gis shape import dialogue|
 |:---:|
+
 __`Python editor`__
 ```python
 import bpy
