@@ -120,7 +120,7 @@ In this section we will learn how to setup blender GIS addon, georeferences and 
 * Extract the zip file
 
 #### Setting up Blender GIS addon
-* [Download](https://github.com/ptabriz/BlenderGIS) the customized version of BlenderGIS addon and  make sure that addon and required dependencies are properly installed
+* Click [here](https://github.com/domlysz/BlenderGIS) to download BlenderGIS addon and make sure that addon and required dependencies are properly installed
 * Open Blender
 * Go to __file__ >  __user preferences__ ( `Alt + Ctrl + U` ) > __Add-ons__  
 * In the search tab, on top left type "gis" and make sure that in the __Categories__ section __All__ is selected.
@@ -164,6 +164,7 @@ Note: When importing your own raster data, you might encounter situations where 
 
 __`Python editor >>>`__
 ```python
+import bpy
 import os
 filePath = os.path.dirname(bpy.path.abspath("//"))
 fileName = os.path.join(filePath,'dsm.tif')
