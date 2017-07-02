@@ -113,7 +113,7 @@ Other Complementary resources for learning blender interface
 
 ## Georeferencing the Blender Scene
 
-In this section we will learn how to setup blender GIS addon, georeferences and importing raster files and assigning textures to them. We will use Dorothia Dix park as a case study for this tutorial.
+In this section we will learn how to setup blender GIS addon, georeferences and importing raster files and assigning textures to them. We will use Dorothia Dix park in Raleigh/NC as a case study for this tutorial.
 
 #### Downloading the tutorial folder and material
 * Go to workshop [link](https://github.com/ptabriz/ICC_2017_Workshop) and click on download, then download as zip option
