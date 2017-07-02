@@ -162,7 +162,7 @@ Note: Blender GIS imports both Digital Elevation Model (DEM) and Digital Surface
 
 Note: When importing your own raster data, you might encounter situations where the DSM is imported as a flat surface. Make sure that 1) you selected the _As DEM_ method 2) the raster resolution is not very low, 3) the data-type is float32, and 4) the coordinate system of the raster is matching the Blender Scenes' coordinate system. For more detailed instructions and troubleshooting read [georeference raster import](https://github.com/domlysz/BlenderGIS/wiki/Import-georef-raster) wiki .
 
-__`Python console >>>`__
+__`Python editor >>>`__
 ```python
 import os
 filePath = os.path.dirname(bpy.path.abspath("//"))
