@@ -157,7 +157,8 @@ Note: Blender GIS imports both Digital Elevation Model (DEM) and Digital Surface
 * On the bottom left side of the window find  __Mode__ and select __As DEM__
 * For __Subdivision__ select  __Mesh__ and make sure that __CRS__ is set to NAD83(HARN)/North carolina.
 * Browse to the 'ICC_workshop' folder and select 'dsm.tif' (in sample_files)
-* If all the steps are followed correctly, you should be able to see the terrain in 3D view window
+* If all the steps are followed correctly, you should be able to see the terrain in 3D viewport, and in outliner. If there is no terrain in 3D view and you can see "dsm" object in outliner, zoom back (with mouse scroll) until you see the terrain in viewport
+
 
 Note: When importing your own raster data, you might encounter situations where the DSM is imported as a flat surface. Make sure that 1) you selected the _As DEM_ method 2) the raster resolution is not very low, 3) the data-type is float32, and 4) the coordinate system of the raster is matching the Blender Scenes' coordinate system. For more detailed instructions and troubleshooting read [georeference raster import](https://github.com/domlysz/BlenderGIS/wiki/Import-georef-raster) wiki .
 
