@@ -119,14 +119,14 @@ Other Complementary resources for learning blender interface
 
 ## Georeferencing the Blender Scene
 
-In this section we will learn how to setup blender GIS addon, georeferences and importing raster files and assigning textures to them. We will use Dorothia Dix park as a case study for this tutorial.
+In this section we will learn how to setup blender GIS addon, georeferences and importing raster files and assigning textures to them. We will use Dorothia Dix park in Raleigh/NC as a case study for this tutorial.
 
 #### Downloading the tutorial folder and material
 * Go to workshop [link](https://github.com/ptabriz/ICC_2017_Workshop) and click on download, then download as zip option
 * Extract the zip file
 
 #### Setting up Blender GIS addon
-* [Download](https://github.com/ptabriz/BlenderGIS) the customized version of BlenderGIS addon and  make sure that addon and required dependencies are properly installed
+* Click [here](https://github.com/domlysz/BlenderGIS) to download BlenderGIS addon and make sure that addon and required dependencies are properly installed
 * Open Blender
 * Go to __file__ >  __user preferences__ ( `Alt + Ctrl + U` ) > __Add-ons__  
 * In the search tab, on top left type "gis" and make sure that in the __Categories__ section __All__ is selected.
@@ -163,12 +163,14 @@ Note: Blender GIS imports both Digital Elevation Model (DEM) and Digital Surface
 * On the bottom left side of the window find  __Mode__ and select __As DEM__
 * For __Subdivision__ select  __Mesh__ and make sure that __CRS__ is set to NAD83(HARN)/North carolina.
 * Browse to the 'ICC_workshop' folder and select 'dsm.tif' (in sample_files)
-* If all the steps are followed correctly, you should be able to see the terrain in 3D view window
+* If all the steps are followed correctly, you should be able to see the terrain in 3D viewport, and in outliner. If there is no terrain in 3D view and you can see "dsm" object in outliner, zoom back (with mouse scroll) until you see the terrain in viewport
+
 
 Note: When importing your own raster data, you might encounter situations where the DSM is imported as a flat surface. Make sure that 1) you selected the _As DEM_ method 2) the raster resolution is not very low, 3) the data-type is float32, and 4) the coordinate system of the raster is matching the Blender Scenes' coordinate system. For more detailed instructions and troubleshooting read [georeference raster import](https://github.com/domlysz/BlenderGIS/wiki/Import-georef-raster) wiki .
 
-__`Python console >>>`__
+__`Python editor >>>`__
 ```python
+import bpy
 import os
 filePath = os.path.dirname(bpy.path.abspath("//"))
 fileName = os.path.join(filePath,'dsm.tif')
