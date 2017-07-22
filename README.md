@@ -1,27 +1,33 @@
 
-
-<img src="img/icc_logo.png" height="100" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Blender_logo.png" height="60"> <img src="img/Grass_logo.png" height="80">
-
+<img src="img/Blender_logo.png" height="60">
 
 
-# 3D Visualization of Geospatial Analytics at ICC 2017
-This is material for the the ICC 2017 workshop called Analytical data visualizations with GRASS GIS and Blender , and Mapping open data with open source geospatial tools held in Washington, DC, July 1-2, 2017. These two sessions introduce GRASS GIS and Blender, example of their processing capabilities, and visualization techniques relevant to spatio-temporal data and high performance computing (HPC). Participants interactively visualize open data and design maps with several open source geospatial tools including Tangible Landscape system.
+
+# 3D Visualization of Geospatial Data With Blender and Sketchfab
+In this learning modules introduce Blender and Sketchfab software, explain the process of transforming common geospatial data formats into 3D objects. They also explain how to visualize geospatial terrain analyses, hydrology and viewshed, and how to annotate and share geospatial analysis in form of an online interactive 3D model.
 
 This tutorial provides basic tips for importing, processing and visualizing Geospatial data in [Blender](https://www.blender.org/).<br>
 - Find the GRASS GIS material [here](https://grasswiki.osgeo.org/wiki/Analytical_data_visualizations_at_ICC_2017)
 
-This tutorial is Prepared by : [Payam Tabrizian](https://github.com/ptabriz) <br>
-Presented with: [Vaclav Petras](https://github.com/wenzeslaus), [Anna Petrasova](https://github.com/petrasovaa/), [Brendan Harmon](https://github.com/baharmon), and [Helena Mitasova](https://github.com/hmitaso?tab=stars)<br>
+This tutorial is Prepared by : [Payam Tabrizian](https://github.com/ptabriz)<br>
+Delivered in Geospatial Visualization course at NC State instructed by Dr. Laura Tateosian <br>
 Tested and reviewed by: [Garrett Millar](https://github.com/gcmillar)
-### Part 1.  
+### Session 1.  
 [I. Basics of Blender interface](#basics-of-blender-interface)<br>
+[II. Basics of Sketchfab interface](#basics-of-blender-interface)<br>
+[III. Assignment 1a: Make primitives with Blender](#make-primitives-with-Blender)<br>
+[III. Assignment 1b: Upload and publish a simple 3D model to Sketchfab](#upload-and-publish-a-simple-3D-model-to-Sketchfab)<br>
+
+### Session 2.
+[Video](https://youtu.be/UA7AyJuaC68)<br>
 [II. Georeferencing the Blender Scene](#georeferencing-the-blender-scene)<br>
 [III. Importing Geospatial data](#importing-geospatial-data)<br>
 [IV. Materials and Texture](#materials-and-texture)<br>
-[V. Rendering](#rendering)<br>
-### Part 2. Step-by-step examples
+[V. Rendering and publishing in Sketchfab](#rendering)<br>
+[VI. Rendering in Blender ](#rendering)<br>
+[Sample workflow (Video)](https://youtu.be/UA7AyJuaC68)<br>
+### Step-by-step examples
 [Example A: Light up the terrain with viewsheds](#light-up-the-terrain-with-viewsheds)<br>
-
 
 ___________________
 ## What is Blender and why use Blender?
